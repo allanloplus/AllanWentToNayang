@@ -1,0 +1,841 @@
+<title>Allan下南洋</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=LXGW+WenKai+TC:wght@400;700&family=Noto+Serif+TC:wght@600;900&family=IBM+Plex+Mono:wght@400;600&display=swap">
+<style>
+/* Layout: one long voyage down the page — boarding pass, map, four legs of journal, mood tide, postcards, medal, return flight.
+   Look: the Strait of Malacca at dusk (his most-photographed hour), with paper for the things he held in his hands. */
+:root{
+  --night:#0e1b21;      /* strait after sunset */
+  --sea:#16303a;        /* water / raised surfaces */
+  --sea-2:#1f4250;
+  --line:#2c5361;
+  --fg:#ece6d9;         /* egret white, slightly warm */
+  --muted:#93a9ad;
+  --sunset:#f2a24e;     /* the dusk sun he chased on 阿強一號 */
+  --sunset-2:#e0703a;
+  --hibiscus:#d8414b;   /* Bunga Raya */
+  --gold:#e6c27a;
+  --gold-2:#a8812f;
+  --paper:#efe7d6;      /* boarding pass, polaroids */
+  --ink:#22201c;
+  --ink-muted:#6c655a;
+  --f-voice:"LXGW WenKai TC","Kaiti TC","STKaiti","BiauKai","DFKai-SB",serif;
+  --f-display:"Noto Serif TC","Songti TC","PMingLiU",serif;
+  --f-data:"IBM Plex Mono",ui-monospace,"SFMono-Regular",Menlo,monospace;
+  --f-ui:"Noto Sans TC","PingFang TC","Microsoft JhengHei",system-ui,sans-serif;
+  color-scheme:dark;
+}
+*{box-sizing:border-box}
+[hidden]{display:none!important}
+html{scroll-behavior:smooth}
+body{background:var(--night);color:var(--fg);font-family:var(--f-ui);font-size:16px;line-height:1.75;margin:0;overflow-x:hidden}
+a{color:var(--sunset)}
+a:focus-visible,button:focus-visible,[tabindex]:focus-visible{outline:2px solid var(--sunset);outline-offset:3px;border-radius:4px}
+img{max-width:100%;display:block}
+.wrap{width:min(1120px,100%);margin:0 auto;padding-inline:20px}
+.eyebrow{font-family:var(--f-data);font-size:12px;letter-spacing:.18em;text-transform:uppercase;color:var(--muted)}
+h2.sec{font-family:var(--f-display);font-weight:900;font-size:clamp(28px,4.6vw,44px);line-height:1.25;margin:.2em 0 .4em;text-wrap:balance}
+.lede{font-family:var(--f-voice);font-size:clamp(17px,2vw,20px);color:var(--fg);max-width:40em;margin:0}
+section{padding-block:72px}
+button{font:inherit;cursor:pointer}
+
+/* ── Hero ───────────────────────────── */
+.hero{position:relative;min-height:min(92vh,820px);display:flex;align-items:flex-end;overflow:hidden;padding:0}
+#sky{position:absolute;inset:0;width:100%;height:100%}
+.hero .wrap{position:relative;padding-block:0 64px}
+.hero h1{font-family:var(--f-display);font-weight:900;font-size:clamp(46px,10vw,120px);line-height:1.02;margin:0;letter-spacing:.02em;text-shadow:0 2px 30px rgba(0,0,0,.35)}
+.hero h1 small{display:block;font-family:var(--f-data);font-weight:400;font-size:clamp(13px,1.6vw,16px);letter-spacing:.3em;color:var(--gold);margin-bottom:14px;text-shadow:none}
+.hero .quote{font-family:var(--f-voice);font-size:clamp(18px,2.4vw,24px);margin:20px 0 28px;max-width:30em}
+.hero .quote span{color:var(--muted);font-size:.7em;display:block;margin-top:4px;font-family:var(--f-data);letter-spacing:.08em}
+.cta{display:inline-flex;align-items:center;gap:10px;background:var(--sunset);color:var(--ink);border:0;border-radius:999px;padding:12px 24px;font-weight:700;text-decoration:none;font-family:var(--f-ui)}
+.cta:hover{background:var(--gold)}
+.cta.ghost{background:transparent;color:var(--fg);box-shadow:inset 0 0 0 1.5px var(--line)}
+.cta.ghost:hover{box-shadow:inset 0 0 0 1.5px var(--sunset);background:transparent}
+.hero .ctas{display:flex;gap:12px;flex-wrap:wrap}
+
+/* ── Prologue + boarding pass ───────── */
+.prologue{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1.15fr);gap:48px;align-items:center}
+.prologue blockquote{margin:0;font-family:var(--f-voice);font-size:clamp(17px,1.9vw,19px);line-height:1.95;border-left:2px solid var(--sunset);padding-left:20px}
+.prologue blockquote p{margin:0 0 .8em}
+.prologue cite{font-style:normal;font-family:var(--f-data);font-size:12px;color:var(--muted)}
+.pass{position:relative;display:grid;grid-template-columns:minmax(0,1fr) 150px;background:var(--paper);color:var(--ink);border-radius:14px;box-shadow:0 30px 60px -20px rgba(0,0,0,.6);font-family:var(--f-data);transform:rotate(-1.2deg)}
+.pass .main{padding:20px 22px;border-right:2px dashed #b9ae98;min-width:0}
+.pass .stub{padding:20px 16px;transition:transform .9s cubic-bezier(.3,.7,.2,1),opacity .9s;transform-origin:left bottom;display:flex;flex-direction:column;gap:10px}
+.pass.torn .stub{transform:translate(40px,30px) rotate(14deg);opacity:.0}
+.pass .airline{display:flex;justify-content:space-between;align-items:center;font-size:11px;letter-spacing:.2em;color:var(--ink-muted);text-transform:uppercase}
+.pass .airline b{color:var(--hibiscus);font-weight:600}
+.pass .route{display:flex;align-items:center;gap:14px;margin:14px 0 10px}
+.pass .route .code{font-size:clamp(34px,5vw,48px);font-weight:600;line-height:1;letter-spacing:.02em}
+.pass .route .city{font-family:var(--f-ui);font-size:12px;color:var(--ink-muted)}
+.pass .route svg{flex:1;min-width:40px;height:24px}
+.pass dl{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:10px 16px;margin:0}
+.pass dt{font-size:10px;letter-spacing:.16em;color:var(--ink-muted);text-transform:uppercase}
+.pass dd{margin:0;font-family:var(--f-voice);font-size:15px;font-weight:700;line-height:1.35}
+.pass .barcode{height:38px;margin-top:14px;background:repeating-linear-gradient(90deg,var(--ink) 0 2px,transparent 2px 4px,var(--ink) 4px 5px,transparent 5px 8px,var(--ink) 8px 11px,transparent 11px 12px)}
+.pass .stub dt{font-size:10px}
+.pass .stub .ret{font-family:var(--f-voice);font-weight:700;font-size:14px;line-height:1.4}
+.pass-actions{display:flex;gap:12px;align-items:center;margin-top:26px;flex-wrap:wrap}
+.pass-note{font-family:var(--f-voice);color:var(--muted);font-size:15px}
+.pass-note[hidden]{display:none}
+
+/* ── Map ───────────────────────────── */
+.mapgrid{display:grid;grid-template-columns:minmax(0,1.35fr) minmax(0,1fr);gap:28px;margin-top:28px;align-items:start}
+.mapbox{position:relative;background:var(--sea);border-radius:18px;overflow:hidden}
+.mapbox svg{display:block;width:100%;height:auto}
+.land{fill:#284a50;stroke:#3d6a70;stroke-width:calc(.8px * var(--zs,1))}
+.border{fill:none;stroke:#7fa1a0;stroke-width:calc(.9px * var(--zs,1));stroke-dasharray:calc(3px * var(--zs,1)) calc(4px * var(--zs,1));opacity:.6}
+.grat{stroke:#24434f;stroke-width:.6}
+.place{cursor:pointer}
+.place circle.dot{fill:var(--gold);stroke:var(--night);stroke-width:2}
+.place text{font-family:var(--f-voice);font-size:calc(14px * var(--zs,1));fill:var(--fg);paint-order:stroke;stroke:var(--sea);stroke-width:calc(4px * var(--zs,1));stroke-linejoin:round;pointer-events:none}
+.place:hover circle.dot,.place.on circle.dot{fill:var(--sunset)}
+.place.on text{fill:var(--sunset)}
+.place .halo{fill:var(--sunset);opacity:0}
+.place.on .halo{opacity:.25}
+.home .dot{fill:var(--hibiscus)!important}
+.pulse{fill:none;stroke:var(--hibiscus);stroke-width:calc(2px * var(--zs,1));animation:pulse 2.4s ease-out infinite;transform-box:fill-box;transform-origin:center}
+@keyframes pulse{from{transform:scale(.4);opacity:.9}to{transform:scale(2.6);opacity:0}}
+.route-bike{fill:none;stroke:var(--sunset);stroke-width:calc(2.5px * var(--zs,1));stroke-dasharray:calc(2px * var(--zs,1)) calc(7px * var(--zs,1));stroke-linecap:round}
+.route-rail{fill:none;stroke:var(--fg);stroke-width:calc(2px * var(--zs,1));stroke-dasharray:calc(10px * var(--zs,1)) calc(5px * var(--zs,1));opacity:.55}
+.flight{fill:none;stroke:var(--gold);stroke-width:2;stroke-dasharray:6 6}
+.maplegend{position:absolute;left:12px;bottom:10px;display:flex;gap:14px;flex-wrap:wrap;font-family:var(--f-data);font-size:11px;color:var(--muted)}
+.maplegend i{display:inline-block;width:18px;height:0;border-top:2.5px dotted var(--sunset);vertical-align:middle;margin-right:6px}
+.maplegend i.r{border-top:2px dashed var(--fg);opacity:.6}
+.maplegend i.h{width:9px;height:9px;border-radius:50%;background:var(--hibiscus);border:0}
+.mapside{display:flex;flex-direction:column;gap:20px;min-width:0}
+.minimap{background:var(--sea);border-radius:18px;padding:14px 14px 6px;position:relative}
+.minimap .eyebrow{position:absolute;left:16px;top:12px}
+.placecard{background:var(--paper);color:var(--ink);border-radius:14px;overflow:hidden;box-shadow:0 20px 40px -20px rgba(0,0,0,.6)}
+.placecard img{width:100%;aspect-ratio:4/3;object-fit:cover}
+.placecard .body{padding:16px 18px 18px}
+.placecard h3{font-family:var(--f-display);font-weight:900;font-size:22px;margin:0;line-height:1.3}
+.placecard .en{font-family:var(--f-data);font-size:11px;letter-spacing:.12em;color:var(--ink-muted);text-transform:uppercase}
+.placecard p{font-family:var(--f-voice);font-size:16px;margin:.6em 0 .4em;line-height:1.7}
+.placecard a{color:#a2452a;font-family:var(--f-data);font-size:12px}
+.chips{display:flex;flex-wrap:wrap;gap:8px;margin-top:4px}
+.chip{background:transparent;border:1px solid var(--line);color:var(--fg);border-radius:999px;padding:4px 12px;font-size:13px;font-family:var(--f-voice)}
+.chip.on,.chip:hover{border-color:var(--sunset);color:var(--sunset)}
+
+/* ── Journal legs ───────────────────── */
+.leg{position:relative}
+.leghead{display:grid;grid-template-columns:auto minmax(0,1fr);gap:8px 28px;align-items:end;margin-bottom:36px}
+.leghead .yr{font-family:var(--f-display);font-weight:900;font-size:clamp(72px,14vw,150px);line-height:.85;color:transparent;-webkit-text-stroke:1.5px var(--sunset);letter-spacing:-.02em}
+.leghead h2{font-family:var(--f-display);font-weight:900;font-size:clamp(26px,3.8vw,38px);margin:0;line-height:1.25;text-wrap:balance}
+.leghead p{margin:6px 0 0;color:var(--muted);font-family:var(--f-voice);font-size:17px;max-width:36em}
+.track{position:relative;display:flex;flex-direction:column;gap:30px;padding-left:44px}
+.track::before{content:"";position:absolute;left:14px;top:6px;bottom:6px;border-left:2px dotted var(--line)}
+.entry{position:relative;display:grid;grid-template-columns:minmax(0,1fr) minmax(0,220px);gap:24px;align-items:start;background:color-mix(in srgb,var(--sea) 70%,transparent);border:1px solid transparent;border-radius:16px;padding:22px 24px;transition:border-color .3s,transform .5s,background .3s}
+.entry.noimg{grid-template-columns:minmax(0,1fr)}
+.entry.flash{border-color:var(--sunset);background:var(--sea-2)}
+.entry::before{content:"";position:absolute;left:-37px;top:30px;width:14px;height:14px;border-radius:50%;background:var(--night);border:2.5px solid var(--mood-c,var(--muted))}
+.entry .meta{display:flex;gap:12px;align-items:baseline;flex-wrap:wrap;font-family:var(--f-data);font-size:12px;color:var(--muted);letter-spacing:.06em}
+.entry .meta .mood{color:var(--mood-c);font-family:var(--f-voice);letter-spacing:0;font-size:13px}
+.entry h3{font-family:var(--f-display);font-weight:900;font-size:clamp(20px,2.4vw,24px);margin:.2em 0 .45em;line-height:1.35;text-wrap:balance}
+.entry blockquote{margin:0;font-family:var(--f-voice);font-size:clamp(16.5px,1.9vw,18.5px);line-height:1.9;color:var(--fg)}
+.entry .src{display:inline-block;margin-top:10px;font-family:var(--f-data);font-size:12px;color:var(--muted);text-decoration:none;border-bottom:1px solid var(--line)}
+.entry .src:hover{color:var(--sunset);border-color:var(--sunset)}
+.polaroid{background:var(--paper);padding:10px 10px 12px;border-radius:3px;box-shadow:0 14px 30px -12px rgba(0,0,0,.7);transform:rotate(var(--tilt,2deg));transition:transform .4s;cursor:zoom-in;border:0;display:block;width:100%}
+.polaroid:hover{transform:rotate(0) scale(1.03)}
+.polaroid img{width:100%;aspect-ratio:1/1;object-fit:cover;background:#cfc6b2}
+.polaroid span{display:block;font-family:var(--f-voice);color:var(--ink);font-size:14px;text-align:center;margin-top:8px;line-height:1.3}
+.interlude{margin:56px 0 0;padding:28px 0 0;border-top:1px solid var(--line);display:flex;gap:18px;align-items:baseline;flex-wrap:wrap}
+.interlude .big{font-family:var(--f-display);font-weight:900;font-size:clamp(40px,7vw,64px);color:var(--sunset);line-height:1}
+.interlude p{margin:0;font-family:var(--f-voice);color:var(--muted);font-size:17px;max-width:36em}
+
+/* ── Day counter ───────────────────── */
+.counter{background:var(--sea);border-radius:20px;padding:28px;display:grid;grid-template-columns:minmax(0,220px) minmax(0,1fr);gap:28px;align-items:center}
+.counter .day{font-family:var(--f-display);font-weight:900;font-size:clamp(64px,10vw,100px);line-height:.9;color:var(--sunset);font-variant-numeric:tabular-nums}
+.counter .day small{display:block;font-family:var(--f-data);font-size:12px;letter-spacing:.16em;color:var(--muted);font-weight:400;margin-top:10px}
+.counter input[type=range]{width:100%;accent-color:var(--sunset)}
+.counter .now{font-family:var(--f-voice);font-size:18px;min-height:3.6em;margin-top:10px}
+.counter .now b{color:var(--gold)}
+.counter .scale{display:flex;justify-content:space-between;font-family:var(--f-data);font-size:11px;color:var(--muted)}
+
+/* ── Mood tide ─────────────────────── */
+.tide{background:var(--sea);border-radius:20px;padding:20px 18px 12px;margin-top:28px;position:relative}
+.tide-scroll{overflow-x:auto}
+.tide svg{display:block;min-width:720px;width:100%;height:auto}
+.tide .axis text{font-family:var(--f-data);font-size:11px;fill:var(--muted)}
+.tide .axis line{stroke:var(--line)}
+.tide .lbl{font-family:var(--f-voice);font-size:13px;fill:var(--muted)}
+.tide .pt{cursor:pointer}
+.tide .pt circle{stroke:var(--night);stroke-width:2}
+.tide .pt:hover circle,.tide .pt.on circle{r:8}
+.tip{position:absolute;pointer-events:none;background:var(--paper);color:var(--ink);border-radius:10px;padding:10px 12px;max-width:260px;font-family:var(--f-voice);font-size:14px;line-height:1.5;box-shadow:0 12px 30px -10px rgba(0,0,0,.7);opacity:0;transition:opacity .15s}
+.tip b{font-family:var(--f-display);display:block}
+.tip small{font-family:var(--f-data);color:var(--ink-muted)}
+.tip.show{opacity:1}
+
+/* ── Numbers ───────────────────────── */
+.ledger{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:0;margin-top:30px;border-top:1px solid var(--line)}
+.ledger div{padding:22px 18px 22px 0;border-bottom:1px solid var(--line)}
+.ledger b{display:block;font-family:var(--f-display);font-weight:900;font-size:clamp(30px,4vw,44px);line-height:1.1;color:var(--fg);font-variant-numeric:tabular-nums}
+.ledger b em{font-style:normal;font-size:.45em;color:var(--sunset);margin-left:4px}
+.ledger span{font-family:var(--f-voice);color:var(--muted);font-size:15px;line-height:1.5;display:block;margin-top:6px}
+
+/* ── Postcards ─────────────────────── */
+.wall{columns:4 220px;column-gap:18px;margin-top:30px}
+.wall .polaroid{break-inside:avoid;margin:0 0 20px;width:100%}
+.wall .polaroid img{aspect-ratio:auto;max-height:340px}
+
+/* ── Medal ─────────────────────────── */
+.ceremony{position:relative;background:radial-gradient(120% 80% at 50% 0%,var(--sea-2),var(--night) 70%);overflow:hidden}
+#confetti{position:absolute;inset:0;width:100%;height:100%;pointer-events:none}
+.ceremony .grid{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1.1fr);gap:40px;align-items:center;position:relative}
+.stage{position:relative;height:560px;perspective:1100px;display:flex;justify-content:center;touch-action:pan-y;cursor:grab;user-select:none}
+.stage:active{cursor:grabbing}
+.hang{position:absolute;top:0;left:50%;width:360px;margin-left:-180px;transform-origin:50% 0;animation:sway 6s ease-in-out infinite}
+.hang.drop{animation:drop 1.4s cubic-bezier(.25,1.4,.4,1) both}
+@keyframes sway{0%,100%{transform:rotate(-1.2deg)}50%{transform:rotate(1.2deg)}}
+@keyframes drop{from{transform:translateY(-420px)}to{transform:translateY(0)}}
+.ribbon{display:block;width:150px;height:200px;margin:0 auto}
+.coin{position:relative;width:320px;height:320px;margin:-24px auto 0;transform-style:preserve-3d;will-change:transform}
+.coin .face{position:absolute;inset:0;backface-visibility:hidden;-webkit-backface-visibility:hidden;border-radius:50%;filter:drop-shadow(0 18px 24px rgba(0,0,0,.55))}
+.coin .back{transform:rotateY(180deg)}
+.coin svg{width:100%;height:100%}
+.shine{position:absolute;inset:0;border-radius:50%;background:linear-gradient(115deg,transparent 35%,rgba(255,255,255,.35) 48%,transparent 60%);background-size:250% 100%;background-position:var(--sx,120%) 0;mix-blend-mode:soft-light;pointer-events:none}
+.citation{background:var(--paper);color:var(--ink);border-radius:6px;padding:30px 30px 26px;font-family:var(--f-voice);font-size:17px;line-height:1.95;position:relative;box-shadow:0 30px 60px -25px rgba(0,0,0,.8)}
+.citation h3{font-family:var(--f-display);font-weight:900;font-size:26px;margin:0 0 4px;letter-spacing:.2em;text-align:center}
+.citation .no{font-family:var(--f-data);font-size:11px;text-align:center;color:var(--ink-muted);letter-spacing:.14em;margin-bottom:16px}
+.citation p{margin:0 0 .7em}
+.citation .seal{position:absolute;right:24px;bottom:18px;width:84px;height:84px;border:3px solid var(--hibiscus);color:var(--hibiscus);border-radius:8px;display:grid;place-items:center;text-align:center;font-family:var(--f-display);font-weight:900;font-size:17px;line-height:1.15;transform:rotate(-8deg);opacity:.85}
+.citation .sig{font-family:var(--f-data);font-size:12px;color:var(--ink-muted);margin-top:14px;padding-right:100px}
+.citation.stamp .seal{animation:stamp .5s cubic-bezier(.3,1.6,.5,1) both}
+@keyframes stamp{from{transform:rotate(-8deg) scale(2.6);opacity:0}to{transform:rotate(-8deg) scale(1);opacity:.85}}
+.award{margin-top:18px;display:flex;gap:12px;align-items:center;flex-wrap:wrap}
+.hint{font-family:var(--f-data);font-size:12px;color:var(--muted)}
+
+/* ── Epilogue ──────────────────────── */
+.epilogue{display:grid;grid-template-columns:minmax(0,320px) minmax(0,1fr);gap:44px;align-items:center}
+.epilogue .polaroid{--tilt:-3deg}
+.epilogue .last{font-family:var(--f-voice);font-size:clamp(20px,2.6vw,26px);line-height:1.8;margin:0}
+.epilogue .after{font-family:var(--f-voice);color:var(--muted);font-size:17px;margin-top:22px;max-width:34em}
+.homeward{position:relative;height:90px;margin-top:30px}
+.homeward svg{width:100%;height:100%}
+footer{padding-block:40px 60px;border-top:1px solid var(--line);font-family:var(--f-data);font-size:12px;color:var(--muted)}
+footer a{color:var(--muted)}
+
+/* ── Lightbox ──────────────────────── */
+.lb{position:fixed;inset:0;background:rgba(6,12,15,.92);display:grid;place-items:center;z-index:50;padding:24px}
+.lb figure{margin:0;max-width:min(980px,100%);display:flex;flex-direction:column;gap:12px}
+.lb img{max-height:78vh;width:auto;margin:0 auto;border-radius:4px}
+.lb figcaption{font-family:var(--f-voice);text-align:center;font-size:17px}
+.lb button{position:absolute;top:calc(14px + env(safe-area-inset-top,0px));right:16px;background:var(--paper);color:var(--ink);border:0;border-radius:999px;padding:6px 16px;font-weight:700}
+
+@media (max-width:860px){
+  .prologue,.mapgrid,.ceremony .grid,.epilogue,.counter{grid-template-columns:minmax(0,1fr)}
+  .entry{grid-template-columns:minmax(0,1fr)}
+  .entry .polaroid{max-width:280px}
+  .ledger{grid-template-columns:repeat(2,minmax(0,1fr))}
+  .stage{height:500px}
+  .epilogue .polaroid{max-width:300px}
+}
+@media (max-width:480px){
+  .wrap{padding-inline:16px}
+  .track{padding-left:30px}
+  .track::before{left:7px}
+  .entry{padding:18px}
+  .entry::before{left:-30px}
+  .pass{grid-template-columns:minmax(0,1fr)}
+  .pass .main{border-right:0;border-bottom:2px dashed #b9ae98}
+  .pass dl{grid-template-columns:repeat(2,minmax(0,1fr))}
+  .leghead{grid-template-columns:minmax(0,1fr)}
+  .stage{height:520px}
+  .citation{padding:24px 20px}
+}
+@media (prefers-reduced-motion:reduce){
+  *,*::before,*::after{animation:none!important;transition:none!important;scroll-behavior:auto!important}
+}
+</style>
+
+<!-- ═══ HERO ═══ -->
+<header class="hero" id="top">
+  <canvas id="sky" aria-hidden="true"></canvas>
+  <div class="wrap">
+    <h1><small>2014.04.22 — 2017.02.25 · PARIT BUNTAR, PERAK</small>Allan<br>下南洋</h1>
+    <p class="quote">「就讓阿拉蕾陪我，這一切有一天都會變成『曾經』。」<span>2014.10.10 · 第一個在海外上班的雙十節</span></p>
+    <div class="ctas">
+      <a class="cta" href="#boarding">登機，重走一次 ↓</a>
+      <a class="cta ghost" href="#medal">直接前往勳章</a>
+    </div>
+  </div>
+</header>
+
+<main>
+<!-- ═══ PROLOGUE ═══ -->
+<section id="boarding">
+  <div class="wrap prologue">
+    <div>
+      <div class="eyebrow">序章 · 2014.01.01</div>
+      <h2 class="sec">提起勇氣，人生來個大轉彎</h2>
+      <blockquote>
+        <p>高職唸電工，二專唸工管，大學唸企管……但無論大學或產業界都只願意給我資訊領域的舞台。</p>
+        <p>年輕時沒懂，懂的時候卻沒有勇氣回頭，就怕來個大轉彎跌倒失去了所有。</p>
+        <p>仍有夢想，仍未放棄，只是，現在就一步一腳印，所以，Log該Log的，讓五年之後再回頭看這一切，會覺得一切都很踏實。</p>
+        <cite>— Allan，部落格第一篇</cite>
+      </blockquote>
+    </div>
+    <div>
+      <div class="pass" id="pass">
+        <div class="main">
+          <div class="airline"><span>Boarding Pass · 登機證</span><b>單程</b></div>
+          <div class="route">
+            <div><div class="code">TPE</div><div class="city">台北 · 家</div></div>
+            <svg viewBox="0 0 120 24" aria-hidden="true"><path d="M2 18 Q60 -6 118 18" fill="none" stroke="#6c655a" stroke-width="1.5" stroke-dasharray="3 4"/><path d="M56 6 l10 4 -10 4 2 -4z" fill="#d8414b"/></svg>
+            <div style="text-align:right"><div class="code">PEN</div><div class="city">檳城 · 南洋</div></div>
+          </div>
+          <dl>
+            <div><dt>Passenger</dt><dd>ALLAN LO</dd></div>
+            <div><dt>Date</dt><dd>2014.10.01</dd></div>
+            <div><dt>Depart</dt><dd>11:40 華航</dd></div>
+            <div><dt>From</dt><dd>20 年 IT ＋ 12 年大學講師</dd></div>
+            <div><dt>To</dt><dd>20 多年的老工廠</dd></div>
+            <div><dt>Seat</dt><dd>人生大轉彎</dd></div>
+          </dl>
+          <div class="barcode" aria-hidden="true"></div>
+        </div>
+        <div class="stub">
+          <dl style="display:flex;flex-direction:column;gap:8px">
+            <div><dt>Carry-on</dt><dd style="font-size:14px">阿拉蕾 ×1<br>超級小刀＋利百代</dd></div>
+            <div><dt>Promise</dt><dd style="font-size:14px">3 年</dd></div>
+            <div><dt>Return</dt><dd class="ret" id="ret">未定</dd></div>
+          </dl>
+        </div>
+      </div>
+      <div class="pass-actions">
+        <button class="cta" id="tear" type="button">撕下存根，出發</button>
+        <span class="pass-note" id="passnote" hidden>回程：2017.02.25 PEN → TPE。原訂 7:55，延誤到 11:40 才起飛，就像這三年的每一趟航班。</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══ MAP ═══ -->
+<section id="map" style="padding-top:24px">
+  <div class="wrap">
+    <div class="eyebrow">航線與足跡</div>
+    <h2 class="sec">從霹靂州的一座小鎮出發</h2>
+    <p class="lede">工廠和宿舍在巴里文打（Parit Buntar），霹靂、檳城、吉打三州交界的稻米小鎮。假日和黃昏，他開車、搭火車，更多時候騎著阿強一號，把半島走成了自己的地圖。點地圖上的地名看看。</p>
+    <div class="mapgrid">
+      <div><div class="chips" id="zoomchips" role="group" aria-label="地圖範圍" style="margin-bottom:12px"><button class="chip on" type="button" data-z="north">北馬生活圈</button><button class="chip" type="button" data-z="full">馬來半島全圖</button></div><div class="mapbox" id="penbox"></div></div>
+      <div class="mapside">
+        <div class="placecard" id="placecard" aria-live="polite"></div>
+        <div class="minimap" id="regionbox"><div class="eyebrow">TPE ⇄ PEN · 約 2,850 km</div></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══ JOURNAL ═══ -->
+<section id="journal" style="padding-top:24px">
+  <div class="wrap" id="legs"></div>
+</section>
+
+<!-- ═══ DAY COUNTER + TIDE ═══ -->
+<section id="tide">
+  <div class="wrap">
+    <div class="eyebrow">離家計日器</div>
+    <h2 class="sec">878 個日子，心情的潮汐</h2>
+    <p class="lede">拖動滑桿，回到那段日子裡的任何一天。下方曲線是依日誌文字讀出的心情起伏：往上是晴朗，往下是想家。點任一個點，會帶你回到那天的日誌。</p>
+    <div class="counter" style="margin-top:28px">
+      <div class="day"><span id="dayN">1</span><small>離家第 N 天</small></div>
+      <div>
+        <label for="dayslider" class="eyebrow" id="dayDate">2014.10.01</label>
+        <input type="range" id="dayslider" min="1" max="878" value="1">
+        <div class="scale"><span>2014.10.01 報到</span><span>2017.02.25 回家</span></div>
+        <div class="now" id="dayNow"></div>
+      </div>
+    </div>
+    <div class="tide">
+      <div class="tide-scroll"><svg id="tidesvg" viewBox="0 0 1000 340" role="img" aria-label="2014 至 2017 年心情起伏曲線"></svg></div>
+      <div class="tip" id="tip"></div>
+    </div>
+    <div class="ledger" id="ledger"></div>
+  </div>
+</section>
+
+<!-- ═══ POSTCARDS ═══ -->
+<section id="postcards" style="padding-top:24px">
+  <div class="wrap">
+    <div class="eyebrow">南洋明信片</div>
+    <h2 class="sec">榴槤、叻沙、白鷺與黃昏</h2>
+    <p class="lede">357 篇日誌裡，有 131 篇在寫吃喝玩樂，45 篇寫鳥獸蟲魚。這是其中幾張。點照片放大。</p>
+    <div class="wall" id="wall"></div>
+  </div>
+</section>
+
+<!-- ═══ MEDAL ═══ -->
+<section class="ceremony" id="medal">
+  <canvas id="confetti" aria-hidden="true"></canvas>
+  <div class="wrap grid">
+    <div>
+      <div class="stage" id="stage" aria-label="南洋奇幻之旅勳章，可左右拖動翻面">
+        <div class="hang" id="hang">
+          <svg class="ribbon" viewBox="0 0 150 200" aria-hidden="true">
+            <defs>
+              <linearGradient id="rib" x1="0" x2="1">
+                <stop offset="0" stop-color="#e6c27a"/><stop offset=".18" stop-color="#e6c27a"/>
+                <stop offset=".18" stop-color="#d8414b"/><stop offset=".40" stop-color="#d8414b"/>
+                <stop offset=".40" stop-color="#f2a24e"/><stop offset=".60" stop-color="#f2a24e"/>
+                <stop offset=".60" stop-color="#d8414b"/><stop offset=".82" stop-color="#d8414b"/>
+                <stop offset=".82" stop-color="#e6c27a"/><stop offset="1" stop-color="#e6c27a"/>
+              </linearGradient>
+            </defs>
+            <path d="M15 0 H135 V150 L75 196 L15 150Z" fill="url(#rib)"/>
+            <path d="M15 0 H135 V150 L75 196 L15 150Z" fill="none" stroke="rgba(0,0,0,.25)" stroke-width="2"/>
+            <rect x="52" y="168" width="46" height="14" rx="3" fill="#a8812f"/>
+          </svg>
+          <div class="coin" id="coin">
+            <div class="face front" id="front"></div>
+            <div class="face back" id="back"></div>
+            <div class="shine" id="shine"></div>
+          </div>
+        </div>
+      </div>
+      <p class="hint" style="text-align:center">← 拖動勳章翻面 →</p>
+    </div>
+    <div>
+      <div class="eyebrow">人生勳章</div>
+      <h2 class="sec">南洋奇幻之旅勳章</h2>
+      <div class="citation" id="citation">
+        <h3>頒 授 辭</h3>
+        <div class="no">2014.10.01 — 2017.02.25 · 878 DAYS</div>
+        <p>茲頒給 <b>Allan</b>。</p>
+        <p>在做了二十年資訊、在大學兼課十二年之後，他提起勇氣讓人生大轉彎，渡海到霹靂州巴里文打，接下一座二十多年的老工廠。</p>
+        <p>八百七十八個日子裡，他讓荒廢的噴水池重新湧出活水，在廠區種下一百棵樹，把路邊賣水的攤子叫進工廠請兩百多位夥伴喝水，把公司大廳交給印度裔同事畫上屠妖節的彩繪，也抱著一箱啤酒走進尼泊爾夥伴的宿舍。</p>
+        <p>每一個想家的黃昏，他騎著阿強一號穿過馬來村落，把思念寫成三百五十七篇日誌。他沒有辜負給他舞台的伯樂，也始終記得家裡的三個小鬼。</p>
+        <p>謹以此章，紀念這趟奇幻之旅：<b>一步一腳印，總有春暖花開的時候。</b></p>
+        <div class="seal" aria-hidden="true">奇幻<br>之旅</div>
+        <div class="sig">依 357 篇「Allan下南洋」日誌整理 · 2026</div>
+      </div>
+      <div class="award">
+        <button class="cta" id="award" type="button">頒授勳章</button>
+        <span class="hint">會有一場小小的典禮</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══ EPILOGUE ═══ -->
+<section id="home">
+  <div class="wrap epilogue">
+    <button class="polaroid" type="button" data-img="356_0" data-cap="2017.02.25　阿拉蕾和豆豆熊，一起回家"><img src="assets/photos/356_0.jpg" alt="阿拉蕾公仔與豆豆熊並排" loading="lazy"><span>2017.02.25 · 一起回家</span></button>
+    <div>
+      <div class="eyebrow">終章 · 2017.02.25 · 再見，南洋</div>
+      <p class="last">「阿拉蕾，我們2年多的奇幻旅行到了終點，收拾滿滿的祝福要回家了。<br>謝謝所有馬來西亞的朋友。」</p>
+      <p class="after">2014 年他寫下：「這一切有一天都會變成『曾經』。」2017 年，這一切終於都成了曾經。他在第一篇日誌裡說，要讓五年之後再回頭看這一切。十二年後的今天回頭看，每一步都很踏實。</p>
+      <div class="homeward" aria-hidden="true"><svg viewBox="0 0 600 90" preserveAspectRatio="none"><path id="hw" d="M10 80 Q300 -30 590 70" fill="none" stroke="#2c5361" stroke-width="2" stroke-dasharray="5 7"/><text x="4" y="78" fill="#93a9ad" font-family="IBM Plex Mono,monospace" font-size="13">PEN</text><text x="556" y="64" fill="#f2a24e" font-family="IBM Plex Mono,monospace" font-size="13">TPE</text><g id="plane"><path d="M-10 -4 L10 0 L-10 4 L-6 0Z" fill="#f2a24e"/></g></svg></div>
+      <div class="ctas" style="display:flex;gap:12px;flex-wrap:wrap;margin-top:8px">
+        <a class="cta ghost" href="#top">再走一次</a>
+        <a class="cta ghost" href="https://allanlo-go.blogspot.com/" target="_blank" rel="noopener">回到原始部落格 ↗</a>
+      </div>
+    </div>
+  </div>
+</section>
+</main>
+
+<footer>
+  <div class="wrap">內容取自「Allan下南洋」部落格（allanlo-go.blogspot.com）2014–2017 年共 357 篇日誌與照片；引文皆為 Allan 原文節錄。心情曲線為依文字所做的整理，僅供回憶。</div>
+</footer>
+
+<div class="lb" id="lb" hidden role="dialog" aria-modal="true" aria-label="照片"><button type="button" id="lbx">關閉</button><figure><img id="lbimg" alt=""><figcaption id="lbcap"></figcaption></figure></div>
+
+<script>
+const MAPS = {"region":{"w":1000,"h":958.4,"land":"M725.6,595.3L729.6,584.2L746.4,567.4L753.6,564.0L782.0,531.8L788.3,527.9L791.1,521.2L789.4,516.1L790.8,512.0L796.9,500.1L798.5,501.1L797.7,512.7L802.8,527.1L792.8,532.6L787.2,541.2L774.4,545.8L774.2,550.6L763.6,566.9L754.2,571.8L749.7,579.0L725.6,595.3ZM894.1,493.1L901.2,492.1L904.1,494.3L903.0,497.1L911.2,494.0L908.6,504.9L900.1,511.5L899.1,516.8L891.3,521.0L881.2,523.2L873.5,528.9L873.9,515.3L876.6,508.1L878.3,490.7L877.1,488.0L871.6,485.9L872.4,483.9L875.9,482.6L894.1,493.1ZM908.3,573.3L904.6,571.6L902.1,564.9L892.5,559.6L887.8,552.9L887.5,548.8L889.7,544.3L897.3,543.5L901.8,540.3L900.5,527.0L904.9,520.8L905.7,514.8L914.3,511.3L922.2,513.6L923.9,518.2L911.3,547.4L910.9,555.7L916.3,566.4L912.2,572.2L908.3,573.3ZM957.7,501.3L963.2,498.4L966.6,499.2L969.6,504.4L969.2,518.0L973.9,522.8L977.1,533.3L973.4,534.4L973.2,537.1L968.4,531.4L969.6,542.1L961.8,537.7L960.6,529.1L962.1,518.2L958.2,512.4L951.4,513.6L947.8,494.1L957.7,501.3ZM978.5,465.0L978.7,469.0L985.5,473.1L983.0,480.7L984.1,492.2L987.8,500.9L986.7,503.6L990.8,505.9L991.8,509.6L988.4,507.0L976.0,506.5L969.8,500.2L966.1,493.3L968.6,486.7L965.1,486.4L958.7,478.6L951.4,474.3L946.7,461.0L955.2,462.4L973.4,460.9L978.5,465.0ZM825.0,430.8L843.2,431.8L847.5,435.1L850.1,433.5L860.6,444.5L858.6,449.4L860.0,460.5L856.1,469.6L851.1,472.2L847.4,471.1L842.6,465.0L832.8,441.8L828.4,439.0L826.7,434.7L823.1,434.1L825.0,430.8ZM375.8,913.5L380.1,922.3L381.6,932.5L386.4,941.3L400.6,944.8L396.2,949.0L394.2,955.1L395.5,958.4L389.2,958.4L374.9,952.9L372.1,947.0L373.1,942.3L368.3,932.3L361.0,929.0L354.5,930.5L347.9,927.9L349.7,923.9L355.5,920.5L356.7,914.0L362.0,911.4L365.7,917.9L367.3,915.6L366.3,911.6L372.2,910.7L375.8,913.5ZM999.5,640.8L994.5,628.3L992.9,628.7L981.3,645.5L980.6,648.9L987.2,656.0L989.7,663.7L989.6,671.6L983.0,681.7L979.6,683.7L976.2,678.7L976.0,668.7L969.8,675.1L966.5,674.9L944.2,663.5L939.9,658.0L937.1,639.2L943.5,630.4L944.0,626.3L936.5,617.7L927.1,612.8L921.7,613.2L918.4,625.9L911.8,622.0L909.3,616.6L905.9,621.5L901.3,622.0L899.7,615.9L894.2,614.6L889.8,618.5L879.5,640.6L875.9,641.2L872.0,636.6L876.5,627.4L879.2,613.1L882.6,608.8L887.0,605.6L903.5,602.0L906.2,600.0L906.2,595.6L909.2,591.6L917.0,588.8L919.9,584.5L927.5,587.2L932.8,593.2L933.7,601.0L929.8,605.2L931.2,605.5L943.7,599.7L950.1,587.9L956.9,590.3L960.4,589.0L962.1,579.1L964.7,576.0L973.2,579.3L975.3,574.2L984.3,574.6L985.5,570.6L981.6,553.7L985.0,550.8L996.2,558.6L1000.0,564.4L999.5,640.8ZM851.7,269.5L870.2,278.1L876.2,277.1L879.6,272.0L883.3,272.9L884.9,277.3L880.6,285.5L879.7,298.3L882.4,305.6L887.1,309.7L887.7,313.8L891.2,315.5L879.3,345.5L868.4,348.9L862.4,353.5L861.3,357.0L862.7,362.0L856.0,373.0L865.2,390.9L863.4,396.8L867.7,410.0L872.3,414.7L881.6,417.6L884.0,415.4L881.3,410.6L890.3,405.0L894.6,405.2L904.2,409.3L908.5,416.6L909.4,423.3L913.5,423.4L915.5,420.5L914.4,416.1L916.3,413.3L919.8,416.4L931.7,420.5L933.0,421.7L931.5,424.2L925.2,424.8L923.4,426.6L931.8,438.7L930.8,443.7L941.9,446.1L939.3,461.1L933.7,457.2L935.9,449.9L925.8,450.1L915.9,445.8L915.5,440.4L911.3,433.1L902.0,427.5L893.6,418.3L889.6,418.9L890.9,426.3L895.9,434.6L896.1,439.2L893.8,441.1L886.8,430.6L877.2,422.1L868.0,417.3L859.4,420.4L854.5,426.5L846.8,425.5L838.8,419.0L835.3,418.5L832.4,421.5L831.8,409.3L841.4,399.6L841.9,394.7L830.8,387.2L829.5,390.9L830.9,399.9L826.2,400.9L820.3,390.0L815.0,388.2L808.8,355.4L805.2,351.2L805.4,343.3L807.2,341.0L817.5,349.9L824.0,347.9L822.0,330.8L825.3,320.9L825.8,307.5L823.7,299.1L831.2,271.3L838.0,268.2L851.7,269.5ZM967.7,828.0L949.5,848.4L929.8,852.8L914.6,852.2L906.2,846.8L870.0,848.7L859.9,846.7L844.2,848.5L830.6,845.7L823.4,848.3L814.9,861.3L812.9,868.8L813.5,876.4L820.0,890.4L828.6,895.8L833.4,906.4L844.8,907.6L848.4,905.4L852.4,898.3L861.7,889.1L866.8,892.2L874.1,892.4L883.8,886.8L902.8,886.7L900.9,883.7L911.6,880.8L919.3,885.2L918.1,894.7L913.4,894.6L907.8,890.5L903.2,891.4L882.9,912.3L870.6,916.7L864.1,923.1L856.1,921.2L854.9,922.6L854.6,924.8L870.3,937.1L877.6,950.4L884.1,955.5L884.1,958.4L846.0,958.4L845.4,950.5L843.5,947.9L836.4,947.0L823.1,954.3L820.5,958.4L776.1,958.4L774.5,949.5L784.1,941.9L786.7,931.0L791.3,924.3L791.0,907.6L797.1,891.6L803.4,884.4L807.6,890.1L803.8,865.4L807.5,863.3L806.6,855.0L820.9,831.6L822.6,831.2L825.5,835.5L831.3,835.3L839.7,822.6L846.3,820.2L856.4,822.9L862.3,828.5L888.6,830.1L901.2,835.6L908.3,832.5L932.7,835.8L946.1,829.9L950.4,824.8L954.2,823.3L956.2,818.1L962.1,815.7L967.1,809.2L972.2,808.7L975.7,815.4L967.7,828.0ZM81.7,695.8L88.8,694.1L110.9,696.3L122.1,706.7L124.9,713.7L132.7,721.5L132.5,728.6L134.6,731.9L145.5,737.1L149.4,742.5L160.9,748.2L179.2,760.9L203.9,792.6L215.3,800.4L213.4,791.0L216.8,789.3L220.2,790.5L228.1,798.3L233.6,808.5L243.3,810.8L253.1,819.2L257.5,831.0L262.2,835.7L267.7,838.7L276.5,839.7L282.2,844.1L283.4,846.9L281.4,849.3L267.2,855.7L278.0,853.7L291.8,846.2L296.2,847.3L302.3,853.4L305.9,861.1L294.6,868.7L293.9,874.2L297.2,877.5L294.9,881.0L297.9,886.7L303.8,890.9L324.4,896.9L328.6,920.7L330.3,924.0L338.9,929.5L338.4,934.0L332.7,940.2L332.9,945.5L342.9,938.3L356.1,938.6L362.0,942.2L374.2,958.4L233.6,958.4L215.3,934.5L214.3,924.4L202.7,904.1L197.2,889.0L183.1,872.6L177.1,861.1L161.2,851.4L149.9,814.8L143.6,803.0L127.6,792.5L115.6,787.3L112.2,771.7L105.9,767.5L92.8,748.4L87.5,744.1L76.3,740.7L49.3,713.7L37.8,693.8L38.3,684.8L43.6,682.8L50.9,683.4L66.7,693.5L81.7,695.8ZM712.1,651.5L716.0,649.8L722.8,640.0L725.9,640.9L728.0,649.3L737.9,654.5L740.4,659.8L738.0,664.6L738.1,672.8L734.4,674.6L744.3,672.8L750.1,669.2L753.6,675.3L748.0,677.7L749.2,680.3L761.0,677.1L766.1,679.6L768.6,683.9L789.3,691.1L789.0,696.5L785.3,699.6L771.0,704.0L758.1,703.2L755.7,708.3L767.6,718.8L767.1,722.7L750.2,726.8L740.6,723.9L734.3,730.5L733.2,732.4L743.0,744.7L738.4,746.4L734.7,743.4L732.8,746.7L720.5,746.9L729.5,753.2L729.8,760.6L737.9,764.7L738.6,768.3L736.5,769.0L740.6,770.3L738.8,772.3L743.3,774.8L752.0,788.5L751.4,791.8L743.4,797.9L752.5,808.2L769.9,820.5L780.8,831.2L777.9,834.2L766.7,836.6L756.1,834.7L747.2,827.5L748.9,834.2L742.0,839.3L735.0,855.0L733.2,873.0L736.3,887.2L726.3,892.2L716.0,901.7L712.4,900.4L710.6,896.0L711.1,905.0L696.1,919.7L700.7,919.7L701.6,924.0L700.7,928.2L697.4,931.0L704.0,933.1L705.1,936.1L704.0,942.8L697.4,944.1L697.1,945.8L699.3,944.9L699.2,949.1L696.6,957.1L596.9,958.4L594.9,956.3L594.3,958.4L556.3,958.4L553.0,954.9L550.8,957.6L542.8,956.3L536.4,958.4L526.0,958.4L528.2,955.5L520.7,958.4L517.9,955.0L508.0,957.4L503.1,926.5L498.8,922.1L501.2,911.3L499.5,903.3L490.0,892.8L477.8,889.6L477.2,886.0L480.5,883.0L472.8,876.8L472.6,871.1L474.8,862.9L476.9,861.6L467.1,851.2L465.8,837.2L467.4,826.4L472.9,822.5L469.1,823.0L471.1,814.8L477.3,808.1L480.6,801.2L488.4,797.8L491.3,803.2L495.8,806.2L503.5,808.3L510.9,807.7L521.1,813.2L527.9,813.7L534.3,817.8L538.3,818.0L533.1,815.1L532.7,810.4L536.0,807.1L539.6,794.3L537.8,792.4L537.7,786.6L538.8,784.8L542.2,787.0L545.1,786.5L545.1,778.4L547.3,774.9L554.0,771.4L593.4,761.6L622.7,727.0L625.4,716.4L638.3,713.7L656.1,702.1L657.8,702.3L657.1,706.1L660.7,706.1L668.0,705.0L672.5,701.3L674.4,696.6L670.8,694.8L669.3,689.6L675.1,683.6L679.4,685.8L683.6,683.3L689.4,674.7L691.8,666.8L703.0,654.3L711.8,639.3L714.0,644.5L712.1,651.5ZM842.1,143.7L838.8,162.1L835.7,161.2L830.7,148.3L822.3,142.2L819.8,136.8L814.8,123.0L816.6,106.9L832.1,80.6L845.1,62.9L862.3,55.1L872.1,62.1L872.7,64.8L869.4,69.5L869.6,78.8L863.0,94.2L856.2,122.3L842.1,143.7ZM529.3,225.3L531.6,234.6L525.7,237.7L520.1,246.3L514.1,263.6L501.5,271.4L500.6,274.2L494.3,274.8L490.7,279.2L485.0,280.6L459.4,270.4L457.4,259.9L458.3,245.9L477.4,231.3L474.3,231.0L477.0,227.4L506.7,221.8L512.3,224.4L512.3,221.8L518.4,224.4L520.4,219.2L529.3,225.3ZM819.2,0.0L815.3,10.5L811.5,13.2L808.8,12.5L807.0,4.9L803.4,8.7L799.6,6.9L801.2,12.1L805.8,14.5L808.7,21.3L795.7,30.2L785.6,28.0L791.6,33.6L800.6,31.8L801.5,34.5L798.2,45.0L800.7,51.4L794.4,49.2L786.9,49.5L786.6,52.6L790.2,56.5L780.5,57.2L778.6,59.8L779.8,63.8L778.4,66.1L769.9,69.1L772.5,72.0L770.5,76.0L759.2,77.6L752.7,75.8L750.2,80.5L745.1,80.7L746.2,83.2L750.8,83.7L751.8,88.0L744.9,95.4L741.9,95.4L738.4,101.1L733.4,100.9L730.2,109.0L727.8,105.0L721.3,109.3L715.9,107.1L714.5,113.3L707.1,116.5L709.4,118.9L704.3,122.1L702.2,129.5L695.3,128.4L692.4,131.4L682.8,134.1L676.3,132.5L671.8,136.7L662.4,133.6L651.7,140.0L648.4,139.7L645.4,135.6L642.0,139.9L642.3,142.8L635.6,140.8L633.3,142.5L635.5,147.1L633.3,150.3L622.0,147.1L625.5,143.4L619.6,140.4L613.1,132.2L613.1,123.7L609.9,124.5L607.7,126.0L607.6,129.7L604.1,130.6L611.1,140.7L612.2,148.6L610.8,152.6L598.4,157.3L596.6,153.1L592.3,162.7L587.8,161.5L580.8,166.9L573.7,160.4L574.7,166.1L572.0,168.0L560.8,164.5L558.5,168.8L555.5,168.7L550.1,173.9L541.2,176.2L531.8,175.3L531.2,178.0L524.1,179.3L517.7,184.8L514.3,184.3L512.9,180.9L511.7,186.2L504.9,193.5L505.7,196.2L511.4,196.9L509.8,202.2L516.0,207.1L514.1,212.3L510.8,214.2L498.1,214.2L496.4,210.5L499.5,210.7L499.0,209.3L495.6,207.2L489.5,194.3L490.0,187.5L493.2,180.9L497.6,179.7L497.9,176.3L494.6,176.2L492.5,173.8L490.2,174.9L485.1,169.5L485.7,174.5L479.6,177.2L471.3,177.6L471.9,172.8L461.7,171.5L456.7,167.1L456.0,162.9L452.4,162.8L453.2,171.5L451.4,172.3L447.6,169.5L445.2,173.9L431.5,175.8L419.0,182.6L417.3,189.9L411.4,193.3L408.6,191.7L402.7,193.3L396.3,191.7L398.6,200.1L392.3,206.8L391.2,214.4L380.2,223.9L374.5,225.6L369.2,236.8L368.5,246.2L363.2,256.7L371.6,271.5L390.6,289.3L390.0,296.5L386.1,295.0L410.0,317.7L411.9,322.8L428.9,335.9L432.3,341.1L438.4,340.8L445.8,348.6L455.6,364.7L463.1,371.3L471.5,392.4L471.5,397.7L478.2,419.9L477.8,422.8L476.5,420.0L477.2,438.4L482.0,448.7L482.7,460.1L479.2,455.2L475.6,458.6L478.3,466.7L475.2,466.0L476.9,480.7L476.5,482.2L474.9,479.2L474.9,488.0L472.9,492.0L470.0,492.3L468.3,500.4L463.1,501.1L446.0,513.3L440.5,514.4L437.6,520.1L432.6,520.8L414.4,530.4L412.3,528.0L409.0,527.2L406.4,522.0L404.6,530.3L400.4,529.3L397.8,526.0L393.9,528.3L398.2,528.9L398.7,533.7L389.6,533.6L399.6,539.4L393.6,547.6L379.3,536.0L390.9,548.8L392.9,554.6L386.9,557.3L369.8,543.1L380.0,556.1L381.5,559.0L380.2,562.4L359.4,572.1L353.8,581.4L347.4,586.9L336.6,587.9L340.5,583.2L338.0,581.4L338.9,555.7L340.7,549.0L346.7,546.3L344.7,541.0L337.6,536.6L333.2,537.7L320.7,525.8L310.6,524.4L308.4,522.2L307.5,524.6L301.9,526.9L299.6,525.5L298.1,521.8L302.5,518.9L303.8,514.7L301.7,509.3L297.9,506.5L292.4,513.7L286.1,513.9L284.1,504.4L285.2,496.5L281.6,492.4L281.3,488.5L279.6,486.4L278.5,488.7L268.6,472.7L266.9,475.7L258.2,466.6L257.1,468.6L251.1,462.3L241.4,457.2L232.6,459.4L215.5,458.3L217.5,433.5L206.3,429.1L194.8,431.8L188.1,436.0L187.2,439.5L190.3,445.8L186.4,457.2L187.2,473.8L175.8,496.4L171.4,514.7L161.4,532.9L161.3,551.6L165.2,561.8L164.2,566.6L168.6,568.2L178.8,565.0L182.3,565.9L187.2,588.2L191.6,593.3L192.6,590.8L196.3,598.4L204.5,631.7L201.2,630.0L199.4,621.7L196.4,621.3L197.4,616.1L195.5,614.2L192.5,615.7L192.6,619.8L200.8,633.0L205.8,633.4L219.3,643.4L228.2,641.9L234.3,643.3L243.8,655.8L253.2,663.2L260.6,665.4L266.7,675.3L280.7,686.1L287.4,694.5L295.4,713.4L296.0,722.3L292.6,742.2L295.4,750.1L294.9,768.9L298.1,774.0L306.6,780.2L319.4,807.6L321.3,817.4L318.0,819.0L311.9,810.7L312.3,816.1L302.9,816.3L296.3,820.2L292.4,813.2L272.8,803.3L243.2,780.4L235.0,776.8L228.0,770.4L229.8,766.4L228.1,758.6L209.9,735.9L212.4,734.1L206.7,722.9L206.7,714.0L198.5,684.1L198.2,671.4L191.2,656.8L178.0,642.9L178.7,635.6L173.5,632.0L174.9,627.6L167.5,627.1L164.4,619.2L162.0,616.0L158.7,616.0L157.8,610.6L149.7,605.1L147.0,598.8L143.1,596.0L138.1,601.3L136.3,601.0L132.5,593.5L132.6,582.5L136.6,565.8L147.0,537.0L142.6,542.0L140.5,537.3L139.6,521.5L146.1,511.6L148.2,503.5L148.1,492.3L152.4,488.2L150.1,486.3L144.9,487.6L146.8,472.0L143.7,471.4L146.2,468.1L144.5,465.1L145.8,458.0L142.9,442.1L132.7,423.8L131.2,415.9L129.7,426.6L128.4,424.5L128.1,410.2L122.1,394.5L122.8,393.1L125.6,394.5L123.0,390.9L120.9,391.7L119.1,387.9L115.9,355.4L112.0,350.8L113.6,336.8L116.4,333.2L105.5,334.7L100.3,322.9L100.0,316.4L89.1,306.7L91.0,309.7L89.1,313.0L90.9,318.5L86.5,328.8L82.0,333.4L76.0,335.3L71.3,332.4L70.3,327.0L68.4,326.9L72.6,337.2L55.1,346.0L52.5,352.2L43.4,360.3L40.7,359.2L42.0,348.3L36.7,357.0L29.4,357.2L27.9,345.6L26.5,350.4L20.7,354.5L22.0,335.1L20.8,340.7L13.8,348.4L7.0,350.9L8.5,334.9L17.6,309.6L18.4,301.3L13.5,281.1L5.4,264.1L7.7,263.9L2.2,259.0L1.4,246.4L0.0,249.8L0.0,0.0L819.2,0.0ZM631.4,153.5L629.3,151.2L629.2,150.4L632.7,151.3L631.4,153.5ZM227.1,767.7L227.3,765.7L228.5,764.6L228.7,767.1L227.1,767.7ZM924.9,917.0L921.3,916.3L922.8,910.6L925.5,914.6L924.9,917.0ZM850.5,670.8L856.0,670.8L856.5,672.8L852.9,675.1L850.6,672.7L841.6,674.2L839.9,672.4L845.0,667.9L850.5,670.8ZM727.7,600.9L727.5,597.0L729.1,597.1L729.9,600.1L727.7,600.9ZM719.6,613.2L717.9,606.5L721.2,604.8L721.2,610.7L719.6,613.2ZM806.0,528.6L805.1,525.5L807.8,522.7L812.8,524.9L806.0,528.6ZM808.2,494.4L807.2,499.2L804.0,497.4L808.2,494.4ZM817.3,474.3L819.6,472.2L823.1,476.7L822.3,478.8L812.8,478.9L808.3,472.8L809.0,469.6L817.3,474.3ZM811.3,489.8L808.2,480.7L809.9,479.8L814.7,483.7L813.7,488.7L811.3,489.8ZM894.5,528.5L891.9,529.5L891.8,523.7L896.9,519.4L898.1,522.2L894.5,528.5ZM916.6,561.5L918.3,544.2L928.4,528.0L938.7,502.4L937.7,530.4L928.1,539.0L921.7,556.3L916.6,561.5ZM931.7,506.3L929.2,506.3L929.4,502.2L929.9,502.1L931.7,506.3ZM955.8,551.1L952.4,551.2L948.8,554.9L941.4,555.9L935.5,555.2L931.8,548.9L942.9,538.8L948.0,538.0L955.5,542.3L955.8,551.1ZM961.8,572.4L958.4,570.8L957.9,567.9L962.2,569.0L961.8,572.4ZM928.3,570.8L923.1,570.9L921.7,568.2L926.7,566.1L928.3,570.8ZM819.5,696.6L816.2,696.0L811.2,700.3L806.9,700.6L807.2,698.6L817.6,692.3L820.3,694.6L819.5,696.6ZM874.8,657.6L869.0,651.3L869.7,649.7L876.8,647.2L885.1,651.7L881.3,655.5L874.8,657.6ZM989.7,546.7L984.2,539.3L985.1,533.2L989.6,529.0L989.7,546.7ZM821.0,425.4L815.7,422.3L815.7,420.4L819.1,421.0L821.0,425.4ZM870.8,429.2L878.6,432.5L878.8,435.6L875.1,440.7L869.7,436.8L869.3,433.7L870.8,429.2ZM875.4,475.8L872.6,468.6L875.0,460.1L879.5,458.4L875.4,475.8ZM883.8,463.3L882.8,461.4L883.7,460.3L884.7,462.3L883.8,463.3ZM893.9,470.1L888.7,465.5L888.3,464.7L893.9,463.5L896.4,467.0L893.9,470.1ZM917.7,456.8L905.4,446.2L904.9,443.8L907.6,443.7L917.7,456.8ZM930.6,467.5L924.6,459.0L925.6,457.7L928.4,459.7L930.6,467.5ZM934.6,473.8L938.8,480.3L938.9,487.2L928.9,480.8L929.2,479.1L921.0,472.3L911.2,481.6L914.6,466.6L913.6,460.6L923.7,465.0L934.6,473.8ZM947.7,429.1L942.9,430.3L938.7,426.1L941.4,422.0L941.4,416.0L944.5,412.8L950.5,419.4L950.1,425.6L947.7,429.1ZM880.4,415.1L873.6,410.3L873.8,408.0L880.5,413.8L880.4,415.1ZM876.6,384.3L874.1,386.8L874.7,394.1L872.9,394.4L870.0,382.2L874.1,381.9L876.6,384.3ZM870.6,261.3L870.6,257.6L873.2,255.3L874.7,257.0L870.6,261.3ZM851.5,255.1L849.6,252.3L850.4,249.7L851.4,251.0L851.5,255.1ZM860.4,246.9L855.8,245.1L856.0,242.8L860.0,244.0L860.4,246.9ZM873.8,212.0L873.2,209.1L876.0,208.6L873.8,212.0ZM869.7,201.2L868.7,199.8L870.8,196.8L871.2,198.6L869.7,201.2ZM999.3,939.8L995.7,929.0L997.6,925.7L999.8,926.9L999.3,939.8ZM998.6,923.8L982.3,924.5L980.9,921.5L1000.0,919.8L998.6,923.8ZM952.6,915.2L974.7,917.3L974.9,919.5L978.7,920.4L978.6,922.6L968.9,924.7L963.5,923.1L950.6,926.6L947.8,922.0L949.4,916.5L952.6,915.2ZM933.3,926.4L931.4,926.3L930.7,922.6L932.7,925.1L933.3,926.4ZM913.6,902.0L913.7,907.0L916.8,902.7L922.7,903.7L922.2,908.8L917.7,910.8L914.8,908.5L911.7,914.2L910.1,912.3L912.0,910.3L911.0,904.3L902.8,913.3L900.3,908.3L903.3,900.3L911.2,899.6L913.6,902.0ZM908.7,923.3L909.0,920.6L910.5,919.2L911.0,920.6L908.7,923.3ZM872.1,877.0L871.3,878.7L864.2,879.4L867.1,875.6L872.1,877.0ZM988.5,753.8L984.7,752.0L983.4,743.3L988.8,751.5L988.5,753.8ZM981.2,778.6L980.0,774.8L981.0,773.0L982.7,774.3L981.2,778.6ZM741.8,734.7L738.3,730.9L740.9,726.4L746.4,728.9L747.6,733.1L741.8,734.7ZM739.0,758.9L736.3,756.3L735.8,752.9L740.0,753.8L739.0,758.9ZM463.7,915.7L462.6,912.7L467.4,912.6L467.3,914.3L463.7,915.7ZM484.7,903.6L482.1,902.2L483.6,894.1L491.9,895.8L492.3,899.2L484.7,903.6ZM463.7,771.5L462.1,770.4L465.2,766.8L465.3,769.8L463.7,771.5ZM443.1,745.9L440.6,744.2L445.1,740.8L438.9,738.3L437.6,733.5L445.2,727.9L449.7,735.2L449.9,740.1L447.4,744.7L443.1,745.9ZM383.8,763.9L381.7,762.6L382.0,759.4L383.5,759.9L383.8,763.9ZM369.9,767.5L365.8,770.3L365.4,764.7L369.9,767.5ZM242.6,798.8L241.3,805.5L237.6,807.8L233.4,806.4L231.4,801.8L232.8,796.5L238.8,794.6L242.6,798.8ZM261.9,832.0L258.0,826.0L258.0,818.0L263.9,823.1L261.9,832.0ZM265.6,820.1L252.4,814.7L250.7,811.2L264.7,814.4L265.6,820.1ZM281.6,840.0L265.4,835.2L265.8,827.8L267.2,826.5L281.3,835.1L281.6,840.0ZM286.5,834.8L272.0,828.9L272.7,825.6L281.2,828.5L286.5,834.8ZM286.6,845.5L286.1,842.1L288.6,840.3L290.1,845.3L286.6,845.5ZM294.7,830.9L291.1,828.4L293.1,826.4L294.5,829.1L294.7,830.9ZM294.7,841.8L292.0,837.7L293.4,834.8L296.9,839.5L294.7,841.8ZM307.3,838.0L304.5,836.1L304.7,834.1L306.4,835.6L307.3,838.0ZM313.3,824.9L316.9,825.4L314.5,831.0L311.4,830.2L311.1,826.3L313.3,824.9ZM330.8,823.8L333.2,829.1L330.5,836.0L325.9,832.0L326.2,829.0L320.4,830.2L320.4,827.4L323.9,824.9L330.8,823.8ZM318.0,836.9L315.5,834.0L316.3,832.5L319.6,834.5L318.0,836.9ZM334.3,861.5L331.4,859.6L328.1,855.2L329.5,855.5L334.3,861.5ZM337.7,868.7L338.8,867.1L343.9,871.6L341.1,873.0L334.4,869.3L330.2,870.5L326.4,868.6L329.5,862.0L337.7,868.7ZM330.3,876.4L328.4,881.7L325.4,881.3L323.9,883.7L320.6,877.4L321.9,874.9L327.3,873.3L330.3,876.4ZM300.2,874.8L295.6,874.0L298.4,869.8L305.2,872.7L300.2,874.8ZM444.0,958.4L424.8,958.4L423.9,955.9L427.1,944.6L432.4,943.4L444.2,948.8L446.6,953.0L444.0,958.4ZM419.8,956.0L419.4,953.3L421.8,953.5L421.1,955.3L419.8,956.0ZM402.8,958.4L398.2,956.3L399.9,955.2L403.5,956.3L402.8,958.4ZM104.9,813.4L122.9,831.5L119.4,844.6L115.2,843.6L112.6,836.0L106.4,832.4L103.0,824.6L96.3,817.0L101.4,817.1L104.9,813.4ZM193.9,958.0L193.1,952.7L195.2,951.5L201.6,958.4L193.9,958.0ZM191.7,952.8L187.3,951.1L187.8,942.8L193.8,948.2L191.7,952.8ZM182.8,938.3L175.2,934.7L173.1,931.6L174.1,927.3L177.7,928.5L182.8,938.3ZM158.5,919.6L150.8,914.0L144.6,902.9L146.1,893.6L152.2,891.9L154.2,893.1L164.5,914.6L164.8,918.2L158.5,919.6ZM137.4,881.0L134.6,879.6L138.3,869.8L135.1,862.6L136.6,862.4L142.0,870.8L137.4,881.0ZM104.0,797.0L100.8,793.6L97.2,791.8L102.9,792.3L104.0,797.0ZM77.0,787.2L63.2,779.7L56.5,777.8L53.6,772.3L56.4,769.5L59.2,770.3L75.6,782.3L77.0,787.2ZM41.9,677.8L40.1,677.3L38.1,674.5L42.5,674.8L41.9,677.8ZM542.4,785.9L541.0,784.7L541.7,774.2L543.1,776.1L542.4,785.9ZM721.3,635.3L720.8,630.6L727.1,627.8L726.3,633.1L721.3,635.3ZM944.9,84.4L941.7,84.7L940.1,81.9L944.1,81.2L946.9,77.1L944.9,84.4ZM932.0,87.3L927.5,86.7L930.3,82.6L935.5,84.3L932.0,87.3ZM982.7,72.1L977.1,72.5L977.6,68.0L982.7,72.1ZM762.7,79.2L763.5,82.6L759.0,80.6L762.7,79.2ZM755.7,80.0L752.8,81.6L753.3,78.2L755.7,80.0ZM804.6,50.8L803.0,45.0L805.6,43.0L807.3,48.6L804.6,50.8ZM512.1,188.7L516.3,189.0L515.8,192.7L508.2,190.9L512.1,188.7ZM425.1,184.8L418.9,188.7L421.2,183.1L425.1,184.8ZM422.5,194.0L418.7,194.8L423.5,190.6L422.5,194.0ZM406.0,199.9L403.5,197.3L404.7,195.9L408.2,197.5L406.0,199.9ZM401.7,198.2L399.0,196.0L399.9,194.0L401.7,196.2L401.7,198.2ZM395.4,584.6L392.7,584.6L395.6,582.6L395.4,584.6ZM315.1,532.2L314.1,541.2L313.1,542.2L307.8,531.2L313.4,529.4L315.1,532.2ZM282.7,502.1L281.1,500.0L282.5,498.7L282.7,502.1ZM268.4,492.9L266.7,491.5L267.8,489.1L269.0,489.5L268.4,492.9ZM263.4,480.3L259.4,479.8L258.7,474.3L261.9,476.9L263.4,480.3ZM306.9,822.1L301.6,820.3L303.3,817.1L306.9,816.4L312.4,819.0L306.9,822.1ZM319.5,775.3L316.5,774.2L318.2,770.8L319.5,775.3ZM195.7,694.3L193.5,693.8L195.2,687.9L198.1,689.8L195.7,694.3ZM184.9,659.5L179.5,662.5L176.5,657.5L182.8,656.0L184.9,659.5ZM176.4,654.4L175.2,651.8L176.7,648.1L178.2,652.7L176.4,654.4ZM189.5,553.3L187.4,551.2L186.9,549.7L188.9,549.8L189.5,553.3ZM189.8,556.3L189.2,560.3L186.4,561.6L186.0,556.5L189.8,556.3ZM143.2,609.7L141.6,603.6L143.8,605.2L143.2,609.7ZM137.4,612.5L134.3,614.2L133.2,609.4L135.1,601.7L138.6,604.3L137.4,612.5ZM132.8,573.8L133.5,570.9L134.4,570.6L134.6,573.4L132.8,573.8ZM141.9,512.4L139.9,511.8L141.5,508.4L141.9,512.4ZM134.2,518.2L132.8,519.3L129.9,514.4L127.5,514.8L129.4,512.3L131.6,512.7L134.2,518.2ZM129.2,547.1L129.3,544.0L134.1,541.5L133.8,542.9L129.2,547.1ZM131.8,496.6L131.2,493.0L134.4,486.2L133.8,492.2L131.8,496.6ZM139.8,482.4L139.2,477.3L139.6,476.5L144.1,480.6L139.8,482.4ZM127.6,490.8L125.6,488.9L125.3,483.7L127.5,487.8L127.6,490.8ZM141.5,494.0L138.6,493.0L136.8,485.9L141.4,485.4L141.5,494.0ZM128.9,474.6L126.2,471.8L127.2,469.9L129.0,470.9L128.9,474.6ZM126.9,467.9L125.1,470.3L123.0,468.2L124.7,466.6L126.9,467.9ZM134.7,457.5L139.3,464.1L134.8,468.5L134.7,457.5ZM134.6,449.4L133.0,446.8L133.3,440.8L134.8,444.1L134.6,449.4ZM110.5,343.7L108.4,336.7L110.7,335.3L112.5,337.7L110.5,343.7ZM159.5,623.9L157.5,621.4L157.7,618.6L158.7,620.0L159.5,623.9ZM24.5,358.0L22.9,357.1L25.8,353.5L26.2,354.9L24.5,358.0ZM12.9,356.3L12.1,351.6L18.7,344.8L17.7,350.8L12.9,356.3ZM946.5,523.9L948.0,520.5L949.5,521.4L949.5,522.9L946.5,523.9ZM977.7,545.3L973.8,541.1L972.9,538.2L976.0,539.4L977.7,545.3ZM900.6,625.3L904.5,627.4L900.2,628.9L900.6,625.3ZM992.8,642.0L990.1,636.6L991.1,633.0L993.2,634.8L992.8,642.0ZM998.5,556.9L997.6,555.2L999.0,550.8L999.8,553.2L998.5,556.9ZM956.6,495.4L950.9,494.2L948.8,489.9L955.2,490.7L956.6,495.4ZM963.6,493.8L962.0,492.6L960.4,488.3L964.2,492.1L963.6,493.8ZM611.4,135.5L607.0,132.3L606.3,130.9L608.3,130.9L611.4,135.5ZM586.5,173.1L584.7,169.4L588.7,167.3L589.5,167.6L586.5,173.1ZM579.6,171.9L580.0,170.1L582.7,169.0L582.6,171.2L579.6,171.9ZM624.9,153.0L620.0,152.0L621.3,150.8L626.4,149.1L624.9,153.0ZM408.9,532.4L408.7,530.8L412.4,528.9L411.5,530.4L408.9,532.4ZM290.0,521.4L288.2,518.8L288.2,518.2L291.2,520.2L290.0,521.4Z","borders":"","bbox":[94,-3,126,27],"k":0.9781476007338057,"sx":31.94814358953216},"pen":{"w":1000,"h":1083.6,"land":"M296.6,19.8L306.5,43.0L317.5,59.9L318.1,65.4L314.1,65.1L303.0,55.8L294.3,53.7L296.6,49.6L293.7,37.3L291.4,35.9L291.4,11.6L288.5,5.6L283.9,3.4L278.1,4.2L272.3,13.2L269.4,10.2L270.5,3.7L276.1,0.0L292.6,0.0L296.6,19.8ZM251.8,0.0L255.4,13.8L262.4,19.5L270.5,38.4L274.6,41.6L285.6,43.3L287.9,53.9L294.9,57.5L289.1,61.0L296.1,71.1L305.4,75.0L315.2,73.6L321.0,67.9L320.5,60.8L349.5,99.8L359.4,104.7L362.8,103.1L378.5,116.2L386.6,120.3L418.0,119.5L424.4,116.5L426.7,112.9L443.6,117.0L440.1,110.2L429.6,106.1L434.3,104.5L438.9,105.3L449.4,112.4L465.6,116.8L477.2,122.8L511.5,177.9L517.3,183.7L533.6,193.8L551.6,211.0L573.0,226.0L578.8,226.0L577.7,222.7L575.4,223.5L577.1,221.1L580.6,221.1L602.6,230.1L609.6,237.2L632.3,279.5L649.7,291.5L656.1,303.3L689.7,328.1L706.0,334.7L729.2,358.7L745.5,384.7L751.3,398.6L782.1,451.8L780.9,462.2L785.6,493.4L782.7,503.2L789.6,527.8L789.6,534.6L782.1,547.2L783.2,552.6L778.0,556.4L773.4,563.5L780.3,586.2L779.7,590.3L776.3,588.1L773.4,592.8L770.5,614.1L766.4,616.3L764.1,621.4L772.2,643.0L784.4,657.5L782.1,662.4L787.3,661.3L778.6,684.5L783.2,711.0L779.7,750.1L780.9,756.6L786.1,768.1L793.7,778.2L812.8,797.0L820.4,798.7L825.0,802.0L830.8,799.8L833.2,800.9L833.2,804.7L839.0,809.1L845.4,820.8L843.6,824.6L844.8,830.6L856.4,845.7L862.8,850.8L863.9,857.4L868.6,864.8L866.3,869.4L867.4,874.6L875.0,883.9L879.0,894.0L888.3,907.9L890.7,913.1L891.2,926.8L895.3,932.0L898.2,930.3L906.9,950.0L908.7,960.1L912.1,964.2L913.3,974.8L918.5,991.2L915.6,1008.2L909.8,1008.2L906.3,1011.4L889.5,1007.9L887.2,999.7L881.4,994.8L880.8,989.0L890.7,983.9L894.7,979.2L888.9,979.2L879.6,985.5L869.2,965.3L865.7,962.5L864.5,964.7L872.1,978.7L872.7,994.8L866.8,999.4L845.4,990.4L831.4,994.8L822.1,994.5L806.5,1010.3L797.2,1006.5L798.3,1013.9L793.1,1023.7L783.2,1012.5L776.3,991.8L768.7,980.3L762.3,975.9L743.2,968.8L715.9,951.6L699.0,946.4L691.5,936.9L683.4,930.6L678.1,928.4L667.7,930.6L661.3,928.4L656.1,918.3L638.1,902.7L636.9,900.6L638.6,899.2L633.4,894.3L573.0,867.5L556.8,850.6L548.1,847.3L546.3,841.8L536.5,837.5L526.6,841.8L524.3,828.2L516.7,821.9L512.1,811.0L502.2,809.3L495.8,804.1L474.3,798.7L467.9,794.3L451.7,773.3L437.2,770.8L433.1,768.4L436.0,761.0L432.5,760.5L432.5,758.3L447.0,743.5L445.9,731.5L440.1,725.8L434.8,699.6L425.0,688.4L419.2,685.9L403.5,666.0L393.6,643.3L376.2,632.4L366.3,619.8L357.0,616.8L358.8,610.2L362.3,606.4L352.4,608.3L340.2,601.2L339.6,584.8L355.3,583.8L360.5,579.1L366.3,579.1L364.6,575.8L351.2,578.8L351.2,568.2L349.5,566.0L335.0,555.6L331.5,554.8L328.0,557.0L324.5,548.5L325.1,541.4L322.8,540.9L321.0,533.8L317.0,530.5L320.5,515.5L323.9,513.3L329.7,491.7L324.5,492.0L322.2,489.8L321.6,483.5L325.1,478.9L328.0,480.5L333.2,474.0L323.4,474.5L321.6,462.0L328.0,458.4L324.5,457.3L325.1,454.0L318.7,452.9L318.7,444.2L314.6,440.7L305.4,441.2L308.8,438.5L308.3,435.5L303.6,432.7L299.0,435.2L284.5,406.8L292.0,400.0L295.5,389.6L293.2,380.3L295.5,373.7L287.9,359.5L287.9,339.9L282.1,325.9L281.5,312.3L286.8,313.1L287.9,310.7L284.5,308.2L286.2,289.4L281.0,253.8L267.6,229.5L265.9,223.0L253.7,211.8L250.2,204.7L245.0,183.9L240.3,180.4L242.6,172.5L238.6,171.9L236.3,176.8L230.5,172.2L225.8,167.0L224.6,162.1L219.4,162.1L221.7,158.0L219.4,152.0L215.9,151.2L204.3,135.3L202.0,133.1L197.4,134.2L193.3,125.8L179.4,120.6L175.3,116.8L175.9,107.5L179.9,106.4L178.8,103.4L174.1,101.2L174.1,92.7L185.2,76.6L184.0,75.0L176.5,78.2L173.5,77.2L173.0,69.5L163.7,75.0L163.1,72.5L158.5,71.7L154.4,65.1L151.5,57.5L159.0,47.4L161.9,36.2L153.2,48.2L149.2,46.6L149.2,37.3L146.3,34.8L143.4,42.7L143.4,50.9L140.5,51.8L127.7,46.6L119.0,35.1L120.7,28.5L117.8,15.7L112.0,14.9L114.3,11.6L112.5,0.0L251.8,0.0ZM378.5,933.9L378.5,924.6L373.3,914.8L372.1,907.4L358.8,886.9L355.3,879.5L354.7,871.9L357.0,865.3L361.7,860.4L368.6,857.4L395.4,858.5L397.7,870.2L416.3,882.3L438.3,901.6L440.1,919.1L448.2,942.3L455.7,952.7L478.4,961.5L501.6,959.0L508.0,960.4L552.1,996.7L567.2,1004.9L571.3,1009.5L573.0,1017.2L571.9,1027.3L578.8,1032.2L580.0,1035.2L579.4,1056.8L581.7,1063.6L587.0,1070.4L602.9,1083.6L61.3,1083.6L51.0,1048.6L38.3,1017.2L38.8,1009.8L30.1,1000.5L27.2,987.7L20.8,984.1L17.9,976.2L21.4,975.4L24.9,980.8L35.4,967.2L35.4,957.1L30.1,955.7L27.8,946.4L20.3,939.3L17.9,941.5L17.9,944.0L20.3,945.1L19.7,948.9L14.4,948.3L9.2,944.0L0.0,930.0L0.0,591.7L12.1,596.0L16.2,602.3L17.9,614.1L31.9,626.6L47.5,633.7L57.4,635.4L93.4,655.6L123.6,678.0L134.6,682.1L143.4,689.7L144.5,693.8L154.4,704.5L185.7,714.8L190.4,724.4L202.0,736.4L203.2,742.2L207.8,741.1L222.3,752.3L225.2,778.8L218.3,793.2L224.6,797.6L227.0,808.2L230.5,805.8L228.1,802.5L228.1,797.0L221.7,792.1L223.5,789.4L228.7,787.5L234.5,788.0L238.0,794.3L238.0,803.1L241.5,813.4L246.1,820.0L247.9,818.6L245.0,808.0L246.7,795.4L251.4,791.9L260.1,791.6L260.6,796.0L266.5,799.8L269.9,810.2L276.3,814.8L287.4,848.4L296.1,861.5L316.4,880.3L325.7,884.7L333.2,883.9L357.0,899.2L366.3,910.1L372.1,929.0L374.5,932.5L378.5,933.9ZM863.4,1069.3L865.7,1075.9L858.1,1078.1L847.7,1072.6L844.8,1066.9L847.7,1065.2L850.6,1066.9L851.7,1062.2L853.5,1065.2L863.4,1069.3ZM193.9,214.5L199.7,211.2L197.4,217.0L197.9,227.9L194.5,230.9L188.1,222.7L193.9,214.5ZM84.0,0.0L81.8,1.0L79.8,0.0L84.0,0.0ZM781.5,1066.3L778.0,1069.1L764.7,1064.4L760.6,1057.6L764.7,1048.0L772.8,1046.4L773.9,1057.0L778.6,1059.8L781.5,1066.3ZM895.3,1044.8L892.4,1059.5L888.3,1057.0L888.9,1061.4L885.4,1069.3L879.0,1069.9L870.3,1065.8L863.9,1065.8L855.8,1055.9L855.2,1052.9L857.0,1051.3L862.8,1054.9L863.9,1052.4L862.2,1045.6L870.3,1045.8L876.1,1037.1L884.8,1045.8L886.0,1041.7L883.7,1038.2L889.5,1037.1L894.1,1040.7L895.3,1044.8ZM907.5,786.7L905.2,789.9L898.8,791.3L891.8,785.0L891.2,778.8L897.0,773.6L895.9,764.3L898.8,761.5L901.1,762.6L905.2,771.9L907.5,786.7ZM269.9,344.8L281.0,353.0L272.3,378.1L255.4,377.0L257.2,374.3L257.2,356.0L254.8,352.2L254.8,346.4L256.6,345.6L260.1,348.6L263.5,345.3L269.9,344.8ZM209.5,199.8L212.5,205.2L204.9,209.3L204.3,211.8L201.4,210.2L200.8,206.3L197.4,206.3L182.3,216.4L179.9,208.5L180.5,201.7L170.6,200.0L168.3,188.3L191.5,190.5L195.6,185.3L199.7,185.3L199.1,182.6L202.0,183.4L204.3,189.4L211.9,195.7L209.5,199.8ZM173.5,173.8L170.6,179.0L166.6,169.5L161.4,164.5L165.4,158.0L164.8,153.3L168.3,150.1L170.6,141.6L178.2,168.4L177.6,172.5L173.5,173.8ZM886.0,1078.3L888.9,1075.1L897.2,1083.6L887.0,1083.6L886.0,1078.3ZM782.7,1080.3L786.8,1083.6L776.7,1083.6L775.1,1081.9L782.7,1080.3ZM106.8,167.3L95.7,172.5L89.9,169.2L92.8,169.7L98.1,165.9L103.3,165.4L106.8,167.3ZM126.5,52.6L137.5,58.3L131.7,58.9L126.5,65.7L126.5,52.6ZM430.2,738.3L426.7,739.7L425.6,738.3L429.6,734.8L430.2,738.3ZM76.6,4.2L83.5,19.5L80.6,21.4L73.7,15.4L69.0,4.5L69.0,0.0L76.6,0.0L76.6,4.2ZM441.2,733.4L441.2,742.4L430.2,749.5L436.6,733.7L441.2,733.4ZM735.9,1083.6L708.2,1083.6L692.6,1071.5L681.6,1068.2L675.8,1062.2L663.0,1062.2L652.6,1066.3L649.1,1063.9L659.0,1052.1L663.6,1042.6L670.0,1040.4L677.6,1040.9L691.5,1045.8L715.9,1060.3L729.8,1079.2L735.9,1083.6ZM975.4,1050.5L978.9,1062.5L975.4,1068.0L977.7,1077.5L976.0,1080.5L970.2,1083.6L947.9,1083.6L943.5,1080.3L949.3,1080.0L949.3,1077.5L940.0,1075.6L938.8,1072.6L945.8,1070.2L944.7,1067.1L949.3,1062.0L941.7,1058.1L923.7,1066.3L914.5,1066.9L910.4,1064.7L908.7,1052.4L923.2,1045.0L926.1,1038.5L933.6,1038.5L935.4,1034.6L947.6,1038.7L952.8,1038.5L963.2,1033.6L963.8,1031.1L966.7,1035.2L965.6,1043.9L975.4,1050.5ZM625.9,1031.9L620.1,1055.1L623.6,1073.4L618.9,1074.0L613.1,1079.2L607.9,1077.8L591.6,1061.4L585.8,1051.3L588.1,1034.4L580.6,1019.4L582.9,1014.7L582.3,1003.0L585.8,1000.5L595.1,1002.1L621.2,1024.3L625.9,1031.9ZM839.6,994.8L871.5,1007.1L863.4,1016.1L855.8,1017.4L843.0,1024.8L837.2,1024.0L831.4,1019.4L814.0,1017.4L812.8,1015.3L821.6,999.4L839.6,994.8ZM628.2,1008.7L630.5,1022.6L625.9,1023.7L618.3,1019.1L601.5,1000.5L594.5,997.2L570.1,993.7L563.7,990.7L552.7,978.9L549.2,972.7L549.8,968.0L560.3,966.6L573.0,973.5L602.6,977.0L623.0,984.1L627.6,988.2L628.2,1008.7ZM614.8,1083.6L629.4,1075.1L623.6,1050.2L627.0,1045.8L633.4,1044.8L638.1,1047.2L647.9,1058.1L646.2,1065.5L648.5,1067.1L655.5,1068.0L664.2,1064.7L671.7,1065.5L701.0,1083.6L614.8,1083.6ZM509.2,903.8L512.1,914.2L505.7,923.8L504.5,938.2L491.7,950.5L483.6,952.7L472.6,951.4L461.6,943.7L450.5,916.9L452.3,903.6L458.1,895.1L464.5,894.0L476.1,896.2L486.5,886.9L491.7,885.0L497.0,888.0L509.2,903.8Z","borders":"M246.1,187.2L249.0,181.2L249.0,171.6L252.5,167.3L250.8,158.5L252.5,146.2L256.0,144.3L260.1,147.3L268.2,145.4L271.1,147.3L278.6,168.6L288.5,174.4L301.3,175.7L309.4,180.9L327.4,186.9L343.7,179.0L344.3,185.0L350.6,186.4L355.9,191.6L356.5,201.1L359.4,206.3L358.2,216.7L359.9,220.5L364.0,218.6L375.6,220.0L379.7,215.3L383.2,214.8L390.7,219.7L400.0,218.9L401.7,228.2L397.7,230.6L395.4,236.9L402.3,244.8L400.0,268.9L398.8,271.9L389.6,275.2L381.4,292.4L385.5,301.4L396.5,305.7L404.1,317.5L407.0,318.6L421.5,310.4L425.0,304.1L427.3,293.2L477.2,273.2L480.7,274.1L484.8,280.3L489.4,282.3L488.8,286.6L494.6,296.7L498.1,297.3L504.5,293.2L510.3,299.2L516.1,300.8L520.2,294.3L534.1,281.4L537.6,261.8L557.9,243.5L560.3,217.3","bbox":[98.6,0.9,104.8,7.6],"k":0.9972501850994857,"sx":161.73506406975974}};
+const URLS = {"0":"2014/09/blog-post.html","2":"2014/09/blog-post_71.html","4":"2014/09/blog-post_76.html","11":"2014/09/blog-post_21.html","20":"2014/09/blog-post_15.html","23":"2014/09/blog-post_12.html","24":"2014/09/blog-post_69.html","34":"2014/09/blog-post_19.html","42":"2014/10/blog-post.html","47":"2014/10/blog-post_2.html","55":"2014/10/apom-balik.html","59":"2014/10/blog-post_46.html","72":"2014/10/blog-post_27.html","83":"2014/10/blog-post_68.html","87":"2014/10/blog-post_25.html","90":"2014/10/blog-post_57.html","92":"2014/10/blog-post_96.html","93":"2014/10/blog-post_74.html","101":"2014/10/blog-post_31.html","104":"2014/10/blog-post_61.html","105":"2014/10/blog-post_26.html","118":"2014/11/2.html","121":"2014/12/blog-post_74.html","127":"2014/12/78.html","133":"2015/01/blog-post_3.html","139":"2015/01/masjid-putra.html","147":"2015/01/blog-post_28.html","148":"2015/02/blog-post.html","153":"2015/02/blog-post_26.html","157":"2015/03/blog-post_5.html","160":"2015/03/blog-post_10.html","164":"2015/04/blog-post.html","165":"2015/05/blog-post.html","166":"2015/05/3.html","169":"2015/06/blog-post.html","175":"2015/07/legoland.html","176":"2015/07/blog-post_18.html","179":"2015/07/blog-post_31.html","182":"2015/08/blog-post_11.html","183":"2015/08/blog-post_13.html","184":"2015/09/blog-post.html","188":"2015/09/blog-post_19.html","191":"2015/10/blog-post.html","193":"2015/10/blog-post_18.html","194":"2015/10/blog-post_25.html","195":"2015/10/blog-post_29.html","196":"2015/11/blog-post_1.html","198":"2015/11/blog-post_8.html","206":"2015/12/blog-post_58.html","210":"2015/12/2015.html","216":"2016/01/blog-post.html","218":"2016/02/blog-post.html","227":"2016/03/blog-post_5.html","234":"2016/04/blog-post_28.html","235":"2016/04/51.html","237":"2016/04/2016-day-13.html","239":"2016/05/blog-post.html","241":"2016/05/blog-post_58.html","244":"2016/05/blog-post_13.html","245":"2016/05/blog-post_14.html","246":"2016/05/allan.html","250":"2016/05/blog-post_18.html","251":"2016/05/blog-post_21.html","252":"2016/05/blog-post_22.html","257":"2016/05/blog-post_25.html","260":"2016/05/blog-post_29.html","263":"2016/06/my-nepal-partners-cheers.html","272":"2016/07/blog-post_9.html","276":"2016/07/25.html","279":"2016/07/blog-post_59.html","283":"2016/08/blog-post_14.html","290":"2016/09/blog-post_15.html","291":"2016/09/blog-post_12.html","296":"2016/09/blog-post_91.html","300":"2016/09/blog-post_17.html","301":"2016/09/blog-post_18.html","302":"2016/09/blog-post_28.html","303":"2016/10/etc_2.html","310":"2016/10/happy-deepavali2017.html","311":"2016/11/blog-post.html","322":"2016/11/blog-post_18.html","328":"2016/12/blog-post_4.html","329":"2016/12/blog-post_10.html","330":"2016/12/ps.html","335":"2016/12/blog-post_65.html","336":"2016/12/blog-post_20.html","337":"2016/12/blog-post_24.html","339":"2016/12/blog-post_25.html","340":"2016/12/2.html","343":"2017/01/10.html","344":"2017/02/blog-post_4.html","345":"2017/02/blog-post.html","347":"2017/02/blog-post_11.html","349":"2017/02/farewell.html","351":"2017/02/blog-post_18.html","353":"2017/02/blog-post_20.html","354":"2017/02/blog-post_21.html","355":"2017/02/blog-post_24.html","356":"2017/02/blog-post_25.html"};
+const BLOG = "https://allanlo-go.blogspot.com/";
+const photo = id => `assets/photos/${id}.jpg`;
+const reduce = matchMedia('(prefers-reduced-motion: reduce)').matches;
+const $ = s => document.querySelector(s);
+const esc = s => String(s).replace(/[&<>"]/g, c => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]));
+
+/* ── Journal data: Allan's own words, trimmed ── */
+const LEGS = [
+ {yr:"2014", title:"第一章　提起勇氣", sub:"三次飛往大馬：五天的初差、兩週的出差，然後是一張單程的工作簽證。", entries:[
+  {d:"2014-04-22",t:"下南洋初體驗",q:"2014年4月22日，我踏上第一次的南洋行，5天的短期出差。我第一次踏入大馬工廠。",img:"1_1",cap:"第一次看見工廠",p:2,m:1},
+  {d:"2014-04-26",t:"檳城到台北飛機途中的雲",q:"結束差旅回台前亮晶晶LINE告訴我要我拍天上的雲給她看，這個願望比想去東京迪士尼容易做到，所以我很努力地在飛機上拍各種形狀的雲！",img:"4_0",cap:"給亮晶晶的雲",p:4,m:1.5},
+  {d:"2014-08-07",t:"南洋黃昏",q:"離開家人第9天了，看著南洋的黃昏，其實我真的有點想家……",img:"11_0",cap:"第一張南洋黃昏",p:11,m:-1},
+  {d:"2014-08-14",t:"第二次下南洋",q:"適逢全世界得機瘟……帶著不安的心情，來回我也玩起自拍上傳到FB，想說若有個意外也留個身影給親友。結果當然證明我是一個福報之人，平安回家。",img:"23_2",cap:"學會了由上往下自拍",p:23,m:0},
+  {d:"2014-09-19",t:"該來的總算要來了…辦工作簽證",q:"雖說調到大馬公司是自願的，但踏入馬來西亞台北辦事處我的內心是五味雜陳……已經沒有選擇回頭的機會，只有低著頭往前走。",img:"34_0",cap:"馬來西亞台北辦事處",p:34,m:-1},
+  {d:"2014-10-01",t:"第三次飛往大馬，正式開始新的生活",q:"到宿舍第一件事，阿拉蕾擺好，未來的日子就靠這張笑臉調整起起伏伏的心情了——因為看到阿拉蕾我就會想起家裡3個小鬼的笑容！",img:"42_3",cap:"阿拉蕾就位",p:42,m:.5},
+  {d:"2014-10-02",t:"祈願",q:"上班第一天清晨7:00第一件事：入境隨俗，來拜這塊地的主人，告訴神明我來報到了，祈求保佑工廠及我都平安。",img:"47_0",cap:"拿督公，我來報到了",p:47,m:.5},
+  {d:"2014-10-10",t:"台灣放假的上班日",q:"第一次台灣的雙十節而且連假我還要上班。總得習慣，人在海外，上不上班都不能回家，沒差的。就讓阿拉蕾陪我，這一切有一天都會變成『曾經』。",p:72,m:-1},
+  {d:"2014-10-22",t:"短暫暴雨的南洋傍晚",q:"沒有地震、沒有颱風的南洋……我在工廠看著這場大雨，想起明天工廠休假4天不能回家，只能守著工廠，想念大海另一端的家人……",img:"87_0",cap:"屠妖節前夕的雷雨",p:87,m:-1.5},
+  {d:"2014-11-30",t:"離家滿2個月了…",q:"月底到了要蓋的章太多，星期天進辦公室。離家完整2個月，真的想家了！",p:118,m:-1.5},
+  {d:"2014-12-23",t:"離家78天，回台灣，一星期後又飛回大馬",q:"只在台灣待6天，不捨、無奈，但我還是得飛回大馬，繼續南洋的修行。",img:"127_3",cap:"往返之間的雲層",p:127,m:-1}
+ ], inter:{big:"78 天",txt:"第一次連續離家的天數。後來的紀錄是三個多月。"}},
+ {yr:"2015", title:"第二章　奇幻之旅", sub:"朋友說這是一趟「奇幻旅行」。他買了一台腳踏車，取名阿強一號；在老工廠裡，開始種樹、修噴水池。", entries:[
+  {d:"2015-01-03",t:"奇幻之旅",q:"幾年前我從沒想過有一天我會在回教國家生活……若說我勇敢，不如說公司老闆比我更勇敢，他們給了我機會，讓我賭我的人生，而老闆竟然願意用他的事業陪我賭。",img:"133_1",cap:"每天清晨的可蘭經從這裡傳來",p:133,m:.5},
+  {d:"2015-01-28",t:"尾牙",q:"無論華人、馬來人、印度裔、越南、印尼，甚至尼泊爾的外勞，都把自己最亮眼的服裝穿出來，做了頭髮化了妝。一次讓我很訝異的尾牙。",img:"147_1",cap:"第一次在馬來西亞尾牙",p:147,m:1},
+  {d:"2015-02-26",t:"海外第一個置產",q:"「騎到開車需要4小時的吉隆坡都沒問題！」就老闆這句話，我把海外第一個置產的東西帶回宿舍了！上山下海，城市鄉村，都由阿強一號來陪伴！",img:"153_0",cap:"阿強一號，RM 560",p:153,m:1.5},
+  {d:"2015-03-10",t:"感念！",q:"千里馬也需要有伯樂，我得繼續努力證明自己是千里馬，也要向所有冷眼旁觀的人證明給我機會的長官是伯樂，就是這個信念支撐著我在異鄉遇到的每個問題。",p:160,m:1.5},
+  {d:"2015-05-03",t:"出發，就對了！完成一個目標",q:"早上5:15和阿強一號從工廠出發，騎了將近60公里，抵達目的地太平湖。同事說我有夠無聊。其實，就是給自己一個目標，雖然很遠，出發就對了。",img:"104_4",cap:"太平湖",p:165,m:1},
+  {d:"2015-05-24",t:"離家3個月了",q:"其實在網路發達的今天天天還可聽到聲音，但不上班的星期天胸口總是悶悶的，快樂不起來。",img:"166_0",cap:"書桌上的全家福",p:166,m:-2},
+  {d:"2015-06-08",t:"不想和世界爭辯的星期六下午",q:"我跟阿強一號說，這世界就是這樣，就算真實，也不等於事實。還好有你陪我，探尋這陌生國度的每一個驚奇。",img:"169_0",cap:"高淵的大河邊",p:169,m:0},
+  {d:"2015-07-31",t:"辦活動",q:"這是這家20多年的老工廠第一次舉辦這樣的活動。就，想試著讓傳統工廠的員工，看能不能激起一些熱情。本來很擔心冷冷清清，還好結果是正面的。",img:"179_1",cap:"員工的設計圖",p:179,m:1},
+  {d:"2015-08-11",t:"失眠的夜",q:"總會遇到天使，也總會出現惡魔……興奮也好、憤怒也好、悲傷也好、快樂也好，總是在走下去。一步一腳印，總有春暖花開的時候！",p:182,m:-1.5},
+  {d:"2015-08-13",t:"一路順風，親愛的夥伴！",q:"駐外，同鄉夥伴總是來來去去……今天又少了一個一起吃飯的夥伴。就只想說，一路順風，記得多替我吃幾碗滷肉飯！",img:"183_0",cap:"送別的那瓶 Tiger",p:183,m:-.5},
+  {d:"2015-09-01",t:"又得回去工作崗位了…",q:"昨晚剛升小四的亮晶晶問我：「爸爸為什麼你要在國外工作？」「為什麼是你去，不是別人去？」「3年好久，你和我們一起生活我那時候幾年級？」我語塞了，然後我失眠了……",p:184,m:-2},
+  {d:"2015-09-19",t:"星期六無聊下午的心情",q:"溪流裡一群馬來人小孩在戲水，村路二旁濃密的樹木夾道……一隻母雞帶著一群小雞在我眼前穿過馬路，那時我腦袋浮出一個傳說中的地方：這不就是桃花源？",p:188,m:.5},
+  {d:"2015-10-10",t:"種樹",q:"在廠區種了100棵樹。那天我離開了，多年後再回來，可以很驕傲地說，這排樹是我任內種的。",p:191,m:1},
+  {d:"2015-10-25",t:"工廠的噴水池—我寄望的活水",q:"剛來工廠時，這個噴水池荒廢已久……我只是在做一件我覺得是對的事，縱使不怎麼有設計感，但那是員工自己參與設計的啊！我喜歡稱這噴水池為工廠的『活水』。",img:"179_0",cap:"工廠的活水",p:194,m:1.5},
+  {d:"2015-10-29",t:"煙霾終於過去了",q:"沒想到有一天我抬頭看到藍天會感動到想哭……",p:195,m:1},
+  {d:"2015-12-20",t:"2015，生日的一天",q:"生日，一個人在海外，又遇星期天，就和阿強一號沿著麻六甲海峽的海岸騎了40公里……我和阿強一號一起跌入水溝，靠一位開車路過看到又回頭解救我的馬來人拉我們上來。",p:210,m:0}
+ ], inter:{big:"100 棵",txt:"在廠區親手種下的樹。「多年後再回來，可以很驕傲地說，這排樹是我任內種的。」"}},
+ {yr:"2016", title:"第三章　活水", sub:"最想家的一年，也是收到最多善意的一年。一杯飲料、一碗咖哩、一場意外的生日歌。", entries:[
+  {d:"2016-01-29",t:"我的尼泊爾好夥伴，一路順風！",q:"雖然我和他們只是工作上的關係相處一年多，但想到這一別離這輩子應該不會再碰到他們了。有點心酸，但這好像就是人生。To my Nepal friends: Have a safe trip home.",p:216,m:-.5},
+  {d:"2016-02-02",t:"我把路邊攤賣水的叫到工廠",q:"突發奇想，把路邊攤叫來工廠，請200多個員工「喝水」。看到員工驚奇笑得很開心看到我就說謝謝，就是一整個「爽」！",p:218,m:2},
+  {d:"2016-03-05",t:"馬來鄉村好風光",q:"每天下班PM 6:40和阿強一號從工廠出發，伴著日落，經過幾個馬來村落，天剛黑回工廠。南洋的鄉村，日落黃昏，四處倦鳥歸巢，伴著夕陽，真美。",img:"295_4",cap:"下班後的固定路線",p:227,m:1},
+  {d:"2016-04-30",t:"流浪檳城2016",q:"三天連假回不了家，決定背起行囊，帶著豆豆熊，把自己丟在喬治城的世界遺址中，特意迷路、無目的、一個人消失在檳城島。",img:"237_0",cap:"豆豆熊同行",p:237,m:.5},
+  {d:"2016-05-13",t:"感動",q:"心頭千千結，打不開，放不開，很悶。馬來西亞同事放一杯飲料在我桌上，說因為看我很悶叫了飲料請我。轉頭進辦公室，突然莫名紅了眼眶……",img:"244_0",cap:"桌上那一杯",p:244,m:-.5},
+  {d:"2016-05-14",t:"有人情味的員工",q:"星期六一大早，二個印度裔的員工提著很香的咖哩叫住我，對我唸著「呷」。從昨天的飲料到今天的咖哩，真是有人情味的工廠！",img:"245_1",cap:"員工家裡的咖哩",p:245,m:1},
+  {d:"2016-05-22",t:"殘忍的影片，沉重的心情",q:"錯過了小朋友會和你感情直接互動的小學階段……但我只承諾3年，已經過了1年半。會過去的，而且也已經過了一半。等我回去和你們過正常的生活！",p:252,m:-2},
+  {d:"2016-05-29",t:"阿強一號",q:"阿強一號陪了我1年2個月，上山下海，日出日落，剛剛才驚覺，輪胎都已磨平，看來該給它換個新鞋了！",img:"260_0",cap:"磨平的輪胎",p:260,m:.5},
+  {d:"2016-06-05",t:"My Nepal partners, Cheers!",q:"突然想起，從來沒有和他們喝一杯過。想做就馬上行動，到超市買了一箱啤酒和冰塊，再度回到外勞宿舍。同是天涯淪落人，你們離鄉的苦悶，我懂！",img:"263_1",cap:"Cheers!",p:263,m:1.5},
+  {d:"2016-07-17",t:"25周年廠慶",q:"看到員工的笑容，我也開心了。很棒的一天。",p:276,m:2},
+  {d:"2016-07-24",t:"望海的背影",q:"不是活動的內容，而是我真的看到那些來自當地員工發自內心的笑容。回想這1年10個月的委屈、孤獨與辛苦……我的堅持和承諾，在2016年7月，有一個讓我自己都很感動的展現。",p:279,m:1.5},
+  {d:"2016-09-17",t:"第一次搭火車、坐渡輪到檳城",q:"從我居住的城市巴里文打搭火車到北海，RM 3.9；渡輪1人RM 1.2，投幣。很棒的一天。我決定以後常坐火車在大馬四處旅行了。",img:"300_6",cap:"北海車站",p:300,m:1},
+  {d:"2016-10-25",t:"Happy Deepavali",q:"我把公司Lobby開放給印度裔員工去布置他們屠妖節的圖騰。其實，我沒想那麼多，就只是想讓在屬於他們的節日表達公司的祝賀之意而已。",img:"310_0",cap:"大廳的屠妖節彩繪",p:310,m:1.5},
+  {d:"2016-12-10",t:"南洋的彩虹",q:"《海角七號》中孝介對女主角說：「難道，你不期待彩虹？」在天空烏雲密布的星期六早晨，我在工廠看到了奇蹟。",img:"329_0",cap:"工廠上空的彩虹",p:329,m:1},
+  {d:"2016-12-20",t:"意外的生日",q:"好像第一次在這麼多人面前被迫當主角……晚上8:00突然被敲房門，又唱了一次生日快樂……謝謝你們，想哭了……",img:"335_2",cap:"被迫當主角",p:335,m:2},
+  {d:"2016-12-24",t:"一個人的耶誕夜",q:"連續9天宿舍只有我一人……機票都訂好了，只是計畫趕不上變化。在這個特殊的節日在異鄉街頭一個人毫無目的閒逛，真的有些心酸。",img:"337_0",cap:"平安夜的 Old Town",p:337,m:-1.5},
+  {d:"2016-12-30",t:"意外的電話",q:"2016年最後一個上班日，接到台北總公司打來的電話。2017/3/1回台北總公司報到……一則以喜，一則以憂。還沒反應過來！",p:340,m:0}
+ ], inter:{big:"200+",txt:"兩次把路邊賣水的攤子叫進工廠，請全廠夥伴喝水。「一下午在工廠隨時有人跟我謝謝，中、英、馬來語都有。」"}},
+ {yr:"2017", title:"第四章　終於結束的起點", sub:"家人第一次來到南洋。他列出還沒去過的地方，展開「最後拼圖之旅」，然後一一道別。", entries:[
+  {d:"2017-01-12",t:"家人南洋探親10日行",q:"宿舍房間重新佈置好，等著明天老婆和亮晶晶第一次到我在南洋的狗窩！……這是第一次和亮晶晶一起搭飛機。上一次跟老婆一起搭飛機是18年前，度蜜月。",img:"343_10",cap:"終於一起來了",p:343,m:2},
+  {d:"2017-02-04",t:"升旗山：最後拼圖之旅",q:"來馬來西亞2年多，檳城都已經熟到不行，但就是沒來過升旗山。因為1月初確定我在馬來西亞的外派將結束，我開始規劃「最後拼圖之旅」。",img:"345_8",cap:"升旗山纜車軌道",p:345,m:1},
+  {d:"2017-02-11",t:"邦咯島：最後拼圖之旅",q:"我認為這個島最棒的是，四處可見珍貴的犀鳥。",img:"347_4",cap:"往邦咯島的船",p:347,m:1},
+  {d:"2017-02-13",t:"Farewell，開始倒數計時了…",q:"銀行小姐說現在馬幣對台幣只有1:6.X耶（2年多前我剛來是1:9.4）。就當作買了一檔爛股票，它的名字叫馬幣……處理了最痛的一件事，終於結束了，剩下的就只剩快樂的回憶。",img:"349_0",cap:"熟識的銀行",p:349,m:0},
+  {d:"2017-02-20",t:"再見，阿強一號",q:"今天送人了，這2年多虧有阿強一號的陪伴！上山下海，晨曦、午後豔陽、黃昏景象，都有我和阿強一號在南洋的足跡。美麗的結局，美麗的回憶！",img:"353_1",cap:"最後一次一起出門",p:353,m:.5},
+  {d:"2017-02-21",t:"終於結束的起點",q:"2年半前帶著『超級小刀＋利百代』渡海來南洋打天下，終於將來到了結束的起點，將準備再帶著它們一起回故鄉！",img:"354_0",cap:"超級小刀＋利百代",p:354,m:1},
+  {d:"2017-02-24",t:"最後一天—再見，大馬的朋友們",q:"2017/2/24，2年5個月的緣分走到了最後一天……再見，南洋的朋友們！最後一夜，我用馬來西亞的天氣來想你。",img:"355_8",cap:"最後一夜",p:355,m:1},
+  {d:"2017-02-25",t:"再見，南洋",q:"阿拉蕾，我們2年多的奇幻旅行到了終點，收拾滿滿的祝福要回家了。謝謝所有馬來西亞的朋友。Thanks to Malaysia friends, I'll miss you.",p:356,m:1.5}
+ ]}
+];
+const ALL = LEGS.flatMap(l => l.entries);
+ALL.forEach((e,i) => e.id = 'e'+i);
+
+const moodColor = m => m >= 1.5 ? 'var(--sunset)' : m >= .5 ? 'var(--gold)' : m > -.5 ? 'var(--muted)' : m > -1.5 ? '#6fa8b8' : '#4f86a6';
+const moodWord = m => m >= 1.5 ? '晴朗' : m >= .5 ? '微晴' : m > -.5 ? '平靜' : m > -1.5 ? '想家' : '很想家';
+const fmt = d => d.replaceAll('-', '.');
+const url = p => BLOG + (URLS[p] || '');
+
+/* ── Render journal ── */
+(function renderLegs(){
+  let tilt = 0;
+  $('#legs').innerHTML = LEGS.map(l => `
+   <div class="leg" id="y${l.yr}">
+    <div class="leghead"><div class="yr" aria-hidden="true">${l.yr}</div><div><h2>${l.title}</h2><p>${l.sub}</p></div></div>
+    <div class="track">
+     ${l.entries.map(e => { tilt = (tilt + 1) % 4; const t = [2.2,-1.6,1.2,-2.4][tilt]; return `
+      <article class="entry${e.img ? '' : ' noimg'}" id="${e.id}" style="--mood-c:${moodColor(e.m)}">
+       <div style="min-width:0">
+        <div class="meta"><time datetime="${e.d}">${fmt(e.d)}</time><span class="mood">心情 · ${moodWord(e.m)}</span></div>
+        <h3>${esc(e.t)}</h3>
+        <blockquote>「${esc(e.q)}」</blockquote>
+        <a class="src" href="${url(e.p)}" target="_blank" rel="noopener">讀原文 ↗</a>
+       </div>
+       ${e.img ? `<button class="polaroid" type="button" style="--tilt:${t}deg" data-img="${e.img}" data-cap="${esc(fmt(e.d) + '　' + e.cap)}"><img src="${photo(e.img)}" alt="${esc(e.cap)}" loading="lazy"><span>${esc(e.cap)}</span></button>` : ''}
+      </article>`}).join('')}
+    </div>
+    ${l.inter ? `<div class="interlude"><span class="big">${l.inter.big}</span><p>${l.inter.txt}</p></div>` : ''}
+   </div>`).join('<div style="height:96px"></div>');
+})();
+
+/* ── Map ── */
+const PLACES = [
+ {id:"pb",n:"巴里文打",en:"Parit Buntar · 家",lat:5.127,lon:100.493,home:1,img:"1_1",p:24,q:"工廠和宿舍都在這裡。每天清晨6點不到，窗外飄進清真寺的可蘭經誦讀聲；每天下班6:40，和阿強一號出發去追黃昏。"},
+ {id:"nt",n:"高淵",en:"Nibong Tebal",lat:5.20,lon:100.47,img:"169_0",p:169,q:"理科大學高淵分校旁的大河邊，四面八方同時傳來清真寺頌讀可蘭經的聲音，與鳥聲蟲鳴交錯。",dx:-6,dy:-10,anchor:"end"},
+ {id:"kk",n:"角頭",en:"Kuala Kurau",lat:5.01,lon:100.43,p:210,q:"2015 年生日，騎著阿強一號沿麻六甲海峽到角頭、古樓，約 40 公里，回程連人帶車跌進水溝。",anchor:"end",dx:-12},
+ {id:"gt",n:"檳城喬治市",en:"George Town",lat:5.414,lon:100.33,img:"237_0",p:237,q:"三天連假回不了家，帶著豆豆熊把自己丟進世界遺產區。租腳踏車一天 RM 10，一路騎到檳威大橋下。",anchor:"end",dx:-12,dy:-6},
+ {id:"kls",n:"極樂寺",en:"Kek Lok Si",lat:5.40,lon:100.274,img:"344_1",p:344,q:"同事說沒到極樂寺就不算來過檳城。2014 年第一站就來這裡；2017 年元宵前，又來看了一次夜景，當作最後拼圖。",anchor:"end",dx:-12,dy:14},
+ {id:"bw",n:"北海",en:"Butterworth",lat:5.399,lon:100.364,img:"300_6",p:300,q:"從巴里文打搭火車 RM 3.9 到北海，再投幣 RM 1.2 搭渡輪過海到檳城。",dx:12,dy:-4},
+ {id:"tp",n:"太平湖",en:"Taiping",lat:4.85,lon:100.745,img:"104_4",p:165,q:"阿強一號的第一次長征：2015/5/3 清晨 5:15 從工廠出發，騎了將近 60 公里。"},
+ {id:"ks",n:"十八丁",en:"Kuala Sepetang",lat:4.83,lon:100.63,p:328,q:"英國人為了運錫礦，在這裡建了馬來西亞第一條鐵路，1885 年通車。也是吃海鮮、買海產的好地方。",anchor:"end",dx:-12,dy:10},
+ {id:"ip",n:"怡保",en:"Ipoh",lat:4.597,lon:101.09,img:"121_1",p:303,q:"第一次搭新型快速電車 ETS，1 小時 15 分抵達。霹靂洞裡有張大千、胡適的題字；還有芽菜雞和白咖啡。"},
+ {id:"gt2",n:"椰殼洞",en:"Gua Tempurung",lat:4.42,lon:101.19,p:351,q:"全馬最大的天然石灰岩洞。離開馬來西亞前，特地找同事陪著來探個究竟。",dy:16},
+ {id:"ch",n:"金馬崙高原",en:"Cameron Highlands",lat:4.47,lon:101.38,img:"272_6",p:272,q:"開齋節的長假，陪出差後留下來的台灣同事上高原。"},
+ {id:"pk",n:"邦咯島",en:"Pulau Pangkor",lat:4.22,lon:100.56,img:"347_4",p:347,q:"最後拼圖之旅。這個島最棒的是，四處可見珍貴的犀鳥。",anchor:"end",dx:-12},
+ {id:"kl",n:"吉隆坡",en:"Kuala Lumpur",lat:3.158,lon:101.712,p:206,q:"出差時走過茨廠街、獨立廣場、雙子星；後來也和同事搭火車來過兩天一夜。"},
+ {id:"kg",n:"巴生",en:"Klang",lat:3.04,lon:101.45,p:257,q:"專程來吃巴生肉骨茶。",anchor:"end",dx:-12},
+ {id:"gh",n:"雲頂高原",en:"Genting Highlands",lat:3.42,lon:101.79,p:148,q:"雲頂高原與酒店。",dy:-8},
+ {id:"ml",n:"馬六甲",en:"Melaka",lat:2.195,lon:102.249,img:"176_6",p:176,q:"我喜歡馬六甲。店家老闆說去過檳城就不需要來馬六甲了，的確很像，連塞車的程度都很像。"},
+ {id:"lg",n:"樂高樂園",en:"Legoland, Johor",lat:1.427,lon:103.63,p:175,q:"開齋節假期飛到柔佛。沒能帶家裡3個小鬼來，先和朋友來探探路。",anchor:"end",dx:-12},
+ {id:"lk",n:"蘭卡威",en:"Langkawi",lat:6.35,lon:99.80,img:"164_15",p:164,q:"公司員工旅遊三天兩夜。租船出海，看比台北天空的麻雀還多的老鷹。"},
+ {id:"hy",n:"泰國合艾",en:"Hat Yai, Thailand",lat:7.006,lon:100.47,p:83,q:"2014/10/18 下班後和同事開車越過黑木山國境，第一次從陸路走進泰國。"}
+];
+function projector(m){ const [lon0,,,lat1] = m.bbox; return (lon,lat) => [ (lon-lon0)*m.k*m.sx, (lat1-lat)*m.sx ]; }
+(function renderMaps(){
+  const m = MAPS.pen, P = projector(m), S = 'http://www.w3.org/2000/svg';
+  const xy = id => { const p = PLACES.find(x=>x.id===id); return P(p.lon,p.lat); };
+  const line = (ids,cls) => `<path class="${cls}" d="M${ids.map(id=>xy(id).join(',')).join(' L')}"/>`;
+  let grat = '';
+  for (let lon=99; lon<=104; lon++){ const [x] = P(lon,0); grat += `<line class="grat" x1="${x}" y1="0" x2="${x}" y2="${m.h}"/>`; }
+  for (let lat=1; lat<=7; lat++){ const [,y] = P(100,lat); grat += `<line class="grat" x1="0" y1="${y}" x2="${m.w}" y2="${y}"/>`; }
+  const places = PLACES.map(p => { const [x,y] = P(p.lon,p.lat); const a = p.anchor||'start'; const dx = p.dx ?? 12, dy = p.dy ?? 5;
+    return `<g class="place${p.home?' home':''}" data-id="${p.id}" tabindex="0" role="button" aria-label="${p.n}">
+      <circle class="halo" cx="${x}" cy="${y}" r="16"/>${p.home?`<circle class="pulse" cx="${x}" cy="${y}" r="10"/>`:''}
+      <circle cx="${x}" cy="${y}" r="16" fill="transparent"/>
+      <circle class="dot" cx="${x}" cy="${y}" r="${p.home?8:6}"/>
+      <text x="${x+dx}" y="${y+dy}" text-anchor="${a}"${p.home?' style="font-weight:700;font-size:calc(17px * var(--zs,1))"':''}>${p.n}</text></g>`; }).join('');
+  $('#penbox').innerHTML = `<svg viewBox="0 0 ${m.w} ${m.h}" role="img" aria-label="馬來半島足跡地圖">
+     ${grat}<path class="land" d="${m.land}"/><path class="border" d="${m.borders}"/>
+     <text x="${P(103.4,6.3)[0]}" y="${P(103.4,6.3)[1]}" fill="#4d7480" font-family="IBM Plex Mono,monospace" style="font-size:calc(10px * var(--zs,1));letter-spacing:.3em">SOUTH CHINA SEA</text>
+     <text x="${P(99.75,5.0)[0]}" y="${P(99.75,5.0)[1]}" fill="#4d7480" font-family="IBM Plex Mono,monospace" style="font-size:calc(10px * var(--zs,1));letter-spacing:.3em" transform="rotate(-62 ${P(99.75,5.0).join(' ')})">STRAIT OF MALACCA</text>
+     <text x="${P(100.75,6.75)[0]}" y="${P(100.75,6.75)[1]}" fill="#6f8f93" font-family="IBM Plex Mono,monospace" style="font-size:calc(10px * var(--zs,1));letter-spacing:.3em">THAILAND</text>
+     <text x="${P(101.15,5.55)[0]}" y="${P(101.15,5.55)[1]}" fill="#6f8f93" font-family="IBM Plex Mono,monospace" style="font-size:calc(10px * var(--zs,1));letter-spacing:.3em">MALAYSIA</text>
+     ${line(['pb','bw'],'route-rail')}${line(['pb','ip','kl'],'route-rail')}
+     ${line(['pb','tp'],'route-bike')}${line(['pb','kk'],'route-bike')}
+     ${places}</svg>
+     <div class="maplegend"><span><i class="h"></i>工廠與宿舍</span><span><i></i>阿強一號騎過</span><span><i class="r"></i>火車</span></div>`;
+  const r = MAPS.region, R = projector(r);
+  const [tx,ty] = R(121.23,25.08), [px,py] = R(100.28,5.30);
+  const cx = (tx+px)/2 + 120, cy = (ty+py)/2 - 60;
+  $('#regionbox').insertAdjacentHTML('beforeend', `<svg viewBox="0 0 ${r.w} ${r.h}" aria-label="台北到檳城的航線">
+     <path class="land" d="${r.land}" style="stroke-width:1.2"/>
+     <path id="arc" class="flight" d="M${tx},${ty} Q${cx},${cy} ${px},${py}"/>
+     <circle cx="${tx}" cy="${ty}" r="9" fill="var(--sunset)"/><circle cx="${px}" cy="${py}" r="9" fill="var(--hibiscus)"/>
+     <text x="${tx+16}" y="${ty+8}" fill="var(--fg)" font-family="LXGW WenKai TC,serif" font-size="34">台北</text>
+     <text x="${px+16}" y="${py+10}" fill="var(--fg)" font-family="LXGW WenKai TC,serif" font-size="34">檳城</text>
+     <g id="rplane"><path d="M-16 -7 L16 0 L-16 7 L-10 0Z" fill="var(--gold)"/></g></svg>`);
+  const arc = $('#arc'), pl = $('#rplane'), L = arc.getTotalLength();
+  let t0 = null;
+  function fly(ts){ if(!t0) t0 = ts; const k = ((ts-t0)/7000)%1; const back = Math.floor((ts-t0)/7000)%2===1;
+    const s = back ? 1-k : k; const a = arc.getPointAtLength(s*L), b = arc.getPointAtLength(Math.min(L,Math.max(0,(s+(back?-.01:.01))*L)));
+    pl.setAttribute('transform',`translate(${a.x},${a.y}) rotate(${Math.atan2(b.y-a.y,b.x-a.x)*180/Math.PI})`); requestAnimationFrame(fly); }
+  if (!reduce) requestAnimationFrame(fly); else { const a = arc.getPointAtLength(L/2); pl.setAttribute('transform',`translate(${a.x},${a.y}) rotate(200)`); }
+
+  const select = id => { const p = PLACES.find(x=>x.id===id);
+    document.querySelectorAll('.place').forEach(g => g.classList.toggle('on', g.dataset.id===id));
+    $('#placecard').innerHTML = `${p.img?`<img src="${photo(p.img)}" alt="${esc(p.n)}">`:''}
+      <div class="body"><div class="en">${esc(p.en)}</div><h3>${esc(p.n)}</h3><p>${esc(p.q)}</p><a href="${url(p.p)}" target="_blank" rel="noopener">讀當時的日誌 ↗</a></div>`; };
+  document.querySelectorAll('.place').forEach(g => { g.addEventListener('click',()=>select(g.dataset.id)); g.addEventListener('keydown',e=>{ if(e.key==='Enter'||e.key===' '){e.preventDefault();select(g.dataset.id);} }); });
+  select('pb');
+  const svg = $('#penbox svg');
+  const VB = { full:[0,0,m.w,m.h], north:(()=>{ const [x0,y0]=P(99.55,7.15), [x1,y1]=P(101.75,3.95); return [x0,y0,x1-x0,y1-y0]; })() };
+  let cur = VB.full.slice();
+  function zoomTo(z, animate){
+    const to = VB[z], from = cur.slice(), t0 = performance.now(), dur = (animate && !reduce) ? 900 : 0;
+    document.querySelectorAll('#zoomchips .chip').forEach(c => c.classList.toggle('on', c.dataset.z===z));
+    function step(now){ const k = dur ? Math.min(1,(now-t0)/dur) : 1, e = k<.5 ? 2*k*k : 1-Math.pow(-2*k+2,2)/2;
+      cur = from.map((v,i)=>v+(to[i]-v)*e); svg.setAttribute('viewBox', cur.join(' '));
+      const zs = cur[2]/Math.max(200, svg.getBoundingClientRect().width); svg.style.setProperty('--zs', zs);
+      svg.querySelectorAll('.place').forEach(g => { const b = g.dataset; g.querySelectorAll('circle').forEach(c => { c.dataset.r0 = c.dataset.r0 || c.getAttribute('r'); c.setAttribute('r', c.dataset.r0*zs*.8); });
+        const t = g.querySelector('text'); t.dataset.x0 = t.dataset.x0 || t.getAttribute('x'); t.dataset.y0 = t.dataset.y0 || t.getAttribute('y');
+        const dot = g.querySelector('.dot'), cx = +dot.getAttribute('cx'), cy = +dot.getAttribute('cy');
+        t.setAttribute('x', cx + (t.dataset.x0-cx)*zs*.75); t.setAttribute('y', cy + (t.dataset.y0-cy)*zs*.75); });
+      if (k<1) requestAnimationFrame(step); }
+    requestAnimationFrame(step);
+  }
+  document.querySelectorAll('#zoomchips .chip').forEach(c => c.addEventListener('click', () => zoomTo(c.dataset.z, true)));
+  zoomTo('north', false);
+  addEventListener('resize', () => zoomTo(document.querySelector('#zoomchips .chip.on').dataset.z, false));
+})();
+
+/* ── Boarding pass ── */
+$('#tear').addEventListener('click', () => {
+  $('#pass').classList.add('torn'); $('#passnote').hidden = false; $('#tear').textContent = '出發了';
+  $('#tear').disabled = true; setTimeout(() => $('#map').scrollIntoView({behavior: reduce ? 'auto' : 'smooth'}), 1300);
+});
+
+/* ── Day counter ── */
+const START = Date.UTC(2014,9,1), DAY = 864e5;
+const dated = ALL.map(e => ({...e, n: Math.round((Date.parse(e.d+'T00:00:00Z')-START)/DAY)+1}));
+function setDay(n){
+  const d = new Date(START + (n-1)*DAY), s = d.toISOString().slice(0,10);
+  $('#dayN').textContent = n; $('#dayDate').textContent = fmt(s);
+  const past = dated.filter(e => e.n <= n && e.n >= 1); const e = past[past.length-1];
+  const left = 878 - n;
+  $('#dayNow').innerHTML = e ? `最近一篇日誌是 <b>${fmt(e.d)}〈${esc(e.t)}〉</b>，心情${moodWord(e.m)}。<br><span style="color:var(--muted)">${left>0?`距離回家還有 ${left} 天，但這時候的他還不知道。`:'今天，回家。'}</span>` : '';
+}
+$('#dayslider').addEventListener('input', e => setDay(+e.target.value));
+setDay(1);
+
+/* ── Mood tide ── */
+(function tide(){
+  const W=1000,H=340,L=46,Rr=20,T=26,B=40, t0=Date.UTC(2014,0,1), t1=Date.UTC(2017,2,15);
+  const X = d => L + (Date.parse(d+'T00:00:00Z')-t0)/(t1-t0)*(W-L-Rr), Y = m => T + (2-m)/4*(H-T-B);
+  const pts = ALL.map(e => [X(e.d),Y(e.m),e]);
+  let path = `M${pts[0][0]},${pts[0][1]}`;
+  for (let i=1;i<pts.length;i++){ const [x0,y0]=pts[i-1],[x1,y1]=pts[i], mx=(x0+x1)/2; path += ` C${mx},${y0} ${mx},${y1} ${x1},${y1}`; }
+  const zero = Y(0);
+  let axis = '';
+  ['2014','2015','2016','2017'].forEach(y => { const x = X(y+'-01-01'); axis += `<line x1="${x}" y1="${T}" x2="${x}" y2="${H-B}" stroke-dasharray="2 4"/><text x="${x+4}" y="${H-B+20}">${y}</text>`; });
+  const band = (a,b,txt) => `<text class="lbl" x="${L-8}" y="${Y(a)+4}" text-anchor="end">${txt}</text>`;
+  const residence = `<rect x="${X('2014-10-01')}" y="${T}" width="${X('2017-02-25')-X('2014-10-01')}" height="${H-T-B}" fill="var(--sea-2)" opacity=".45"/>
+     <text x="${X('2014-10-01')+6}" y="${T+14}" font-family="IBM Plex Mono,monospace" font-size="11" fill="var(--muted)">駐外 878 天</text>`;
+  $('#tidesvg').innerHTML = `
+    <defs><linearGradient id="tg" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#f2a24e" stop-opacity=".55"/><stop offset="${(zero-T)/(H-T-B)}" stop-color="#f2a24e" stop-opacity=".05"/><stop offset="${(zero-T)/(H-T-B)}" stop-color="#4f86a6" stop-opacity=".05"/><stop offset="1" stop-color="#4f86a6" stop-opacity=".55"/></linearGradient></defs>
+    ${residence}
+    <g class="axis">${axis}<line x1="${L}" y1="${zero}" x2="${W-Rr}" y2="${zero}"/></g>
+    ${band(2,0,'晴朗')}${band(0,0,'平靜')}${band(-2,0,'想家')}
+    <path d="${path} L${pts[pts.length-1][0]},${zero} L${pts[0][0]},${zero}Z" fill="url(#tg)" transform="translate(0,0)" style="clip-path:none"/>
+    <path d="${path}" fill="none" stroke="var(--fg)" stroke-width="1.6" opacity=".7"/>
+    ${pts.map(([x,y,e]) => `<g class="pt" data-id="${e.id}" tabindex="0" role="button" aria-label="${fmt(e.d)} ${esc(e.t)}"><circle cx="${x}" cy="${y}" r="5.5" fill="${moodColor(e.m)}"/><circle cx="${x}" cy="${y}" r="12" fill="transparent" stroke="none"/></g>`).join('')}`;
+  const tip = $('#tip'), box = $('.tide');
+  const show = (g) => { const e = ALL.find(a=>a.id===g.dataset.id); const c = g.querySelector('circle').getBoundingClientRect(), b = box.getBoundingClientRect();
+    tip.innerHTML = `<small>${fmt(e.d)} · ${moodWord(e.m)}</small><b>${esc(e.t)}</b>${esc(e.q.slice(0,46))}…`;
+    let left = c.left - b.left + 14; if (left > b.width - 270) left = c.left - b.left - 270; tip.style.left = Math.max(8,left)+'px';
+    tip.style.top = Math.max(8, c.top - b.top - 20)+'px'; tip.classList.add('show'); };
+  const go = (g) => { const el = document.getElementById(g.dataset.id); el.scrollIntoView({behavior: reduce?'auto':'smooth', block:'center'}); el.classList.add('flash'); setTimeout(()=>el.classList.remove('flash'),2200); };
+  document.querySelectorAll('.pt').forEach(g => { g.addEventListener('mouseenter',()=>show(g)); g.addEventListener('focus',()=>show(g));
+    g.addEventListener('mouseleave',()=>tip.classList.remove('show')); g.addEventListener('blur',()=>tip.classList.remove('show'));
+    g.addEventListener('click',()=>go(g)); g.addEventListener('keydown',e=>{ if(e.key==='Enter'){go(g);} }); });
+})();
+
+/* ── Ledger ── */
+$('#ledger').innerHTML = [
+  ['878','天','駐外日子：2014.10.01 報到，2017.02.25 回家'],
+  ['357','篇','部落格日誌，從 2014 元旦寫到 2017.02.25'],
+  ['3,351','張','日誌裡的照片'],
+  ['100','棵','在廠區親手種下的樹'],
+  ['60','km','阿強一號第一次長征，工廠到太平湖'],
+  ['9','張','到任一年多收到的員工喜帖'],
+  ['9.4→6.x','','馬幣兌台幣。「就當作買了一檔爛股票」'],
+  ['25','週年','2016 年的廠慶，他心中這段旅程的高峰']
+].map(([a,u,t]) => `<div><b>${a}${u?`<em>${u}</em>`:''}</b><span>${t}</span></div>`).join('');
+
+/* ── Postcards ── */
+const CARDS = [
+ ["20_0","第一次買榴槤，放冷凍庫當冰棒吃了12天"],["55_0","路邊的 Apom Balik"],["105_1","叻沙，後來才吃到最好吃的那碗"],["90_0","肉骨茶麵"],
+ ["311_1","第一次用芭蕉葉吃飯"],["101_1","檳城極樂寺"],["121_3","怡保霹靂洞的猴子"],["164_15","蘭卡威，比麻雀還多的老鷹"],
+ ["176_6","古都馬六甲"],["272_6","金馬崙高原的茶園"],["303_0","第一次搭 ETS 快速電車"],["301_3","黃昏樹上的大群白鷺"],
+ ["290_1","南洋鄉村黃昏的群鳥飛舞"],["322_2","白天的月亮"],["93_2","海邊的漁人"],["241_3","檳城臉譜"],
+ ["246_0","古有姜太公釣魚，現代有 Allan 拍鳥"],["250_0","陸橋上的黃昏，我和阿強一號"],["339_4","檳城嶼南方的海灘"],["344_1","元宵前極樂寺的夜景"]
+];
+$('#wall').innerHTML = CARDS.map(([id,c],i) => `<button class="polaroid" type="button" style="--tilt:${[1.5,-1.2,.6,-2,1.1][i%5]}deg" data-img="${id}" data-cap="${esc(c)}"><img src="${photo(id)}" alt="${esc(c)}" loading="lazy"><span>${esc(c)}</span></button>`).join('');
+
+/* ── Lightbox ── */
+let lastFocus = null;
+document.addEventListener('click', e => { const b = e.target.closest('.polaroid'); if(!b) return;
+  lastFocus = b; $('#lbimg').src = photo(b.dataset.img); $('#lbimg').alt = b.dataset.cap; $('#lbcap').textContent = b.dataset.cap; $('#lb').hidden = false; $('#lbx').focus(); });
+const closeLb = () => { $('#lb').hidden = true; lastFocus && lastFocus.focus(); };
+$('#lbx').addEventListener('click', closeLb); $('#lb').addEventListener('click', e => { if(e.target.id==='lb') closeLb(); });
+document.addEventListener('keydown', e => { if(e.key==='Escape' && !$('#lb').hidden) closeLb(); });
+
+/* ── Medal faces ── */
+(function medal(){
+  const ring = (id) => `
+    <defs>
+      <radialGradient id="g${id}" cx="40%" cy="35%" r="75%"><stop offset="0" stop-color="#fbe6a8"/><stop offset=".45" stop-color="#e6c27a"/><stop offset="1" stop-color="#8e6a22"/></radialGradient>
+      <linearGradient id="r${id}" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#f6dc96"/><stop offset=".5" stop-color="#a8812f"/><stop offset="1" stop-color="#f0d38a"/></linearGradient>
+      <path id="tp${id}" d="M160,160 m-122,0 a122,122 0 1,1 244,0 a122,122 0 1,1 -244,0"/>
+    </defs>
+    <circle cx="160" cy="160" r="158" fill="url(#r${id})"/>
+    ${Array.from({length:120},(_,i)=>{const a=i*3*Math.PI/180;return `<line x1="${160+150*Math.cos(a)}" y1="${160+150*Math.sin(a)}" x2="${160+157*Math.cos(a)}" y2="${160+157*Math.sin(a)}" stroke="#7a5a1c" stroke-width="1.3"/>`}).join('')}
+    <circle cx="160" cy="160" r="146" fill="url(#g${id})" stroke="#8e6a22" stroke-width="2"/>
+    <circle cx="160" cy="160" r="104" fill="none" stroke="#8e6a22" stroke-width="1.5"/>`;
+  const egret = (x,y,s) => `<path d="M${x-8*s},${y} q${4*s},${-5*s} ${8*s},0 q${4*s},${-5*s} ${8*s},0" fill="none" stroke="#5a4012" stroke-width="${1.6}" stroke-linecap="round"/>`;
+  $('#front').innerHTML = `<svg viewBox="0 0 320 320" aria-hidden="true">${ring('f')}
+    <text font-family="Noto Serif TC,serif" font-weight="900" font-size="19" fill="#5a4012" letter-spacing="3"><textPath href="#tpf" startOffset="0">南洋奇幻之旅勳章 · ALLAN · 2014 — 2017 · 一步一腳印 ·</textPath></text>
+    <clipPath id="cf"><circle cx="160" cy="160" r="100"/></clipPath>
+    <g clip-path="url(#cf)">
+      <rect x="60" y="60" width="200" height="200" fill="#e9c77e"/>
+      <circle cx="160" cy="178" r="40" fill="#f6dc96" stroke="#8e6a22" stroke-width="1.5"/>
+      ${Array.from({length:12},(_,i)=>{const a=(-170+i*14)*Math.PI/180;return `<line x1="${160+48*Math.cos(a)}" y1="${178+48*Math.sin(a)}" x2="${160+68*Math.cos(a)}" y2="${178+68*Math.sin(a)}" stroke="#a8812f" stroke-width="1.6"/>`}).join('')}
+      <rect x="60" y="178" width="200" height="90" fill="#c9a24f"/>
+      ${[186,196,207,219].map((y,i)=>`<line x1="${100+i*6}" y1="${y}" x2="${220-i*6}" y2="${y}" stroke="#8e6a22" stroke-width="1.4" stroke-dasharray="${14-i*2} ${6+i*2}"/>`).join('')}
+      <path d="M72 178 C80 150 86 132 96 120 M96 120 c-12 -2 -20 4 -24 10 M96 120 c-2 -12 -10 -18 -18 -18 M96 120 c10 -6 20 -4 24 2 M96 120 c8 -10 18 -12 24 -8" fill="none" stroke="#5a4012" stroke-width="2.4" stroke-linecap="round"/>
+      ${egret(190,112,1)}${egret(214,128,.8)}${egret(176,134,.7)}
+      <g transform="translate(160 236)" fill="none" stroke="#5a4012" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round">
+        <circle cx="-30" cy="0" r="17"/><circle cx="30" cy="0" r="17"/>
+        <path d="M-30 0 L-8 -26 L22 -26 L30 0 M-8 -26 L2 0 L-30 0 M2 0 L22 -26 M-12 -32 L-2 -32 M18 -32 l6 -4"/>
+      </g>
+    </g>
+    <text x="160" y="94" text-anchor="middle" font-family="IBM Plex Mono,monospace" font-size="11" fill="#5a4012" letter-spacing="2">PARIT BUNTAR</text>
+  </svg>`;
+  const petals = Array.from({length:16},(_,i)=>`<ellipse cx="160" cy="110" rx="9" ry="22" transform="rotate(${i*22.5} 160 160)" fill="none" stroke="#7a5a1c" stroke-width="1.4"/>`).join('')
+    + Array.from({length:32},(_,i)=>{const a=i*11.25*Math.PI/180;return `<circle cx="${160+80*Math.cos(a)}" cy="${160+80*Math.sin(a)}" r="2.2" fill="#7a5a1c"/>`}).join('');
+  $('#back').innerHTML = `<svg viewBox="0 0 320 320" aria-hidden="true">${ring('b')}
+    <text font-family="IBM Plex Mono,monospace" font-weight="600" font-size="13" fill="#5a4012" letter-spacing="2.4"><textPath href="#tpb">TERIMA KASIH · THANK YOU · 謝謝所有馬來西亞的朋友 ·</textPath></text>
+    ${petals}
+    <circle cx="160" cy="160" r="54" fill="#e9c77e" stroke="#8e6a22" stroke-width="1.5"/>
+    <text x="160" y="134" text-anchor="middle" font-family="LXGW WenKai TC,serif" font-size="11" fill="#5a4012" letter-spacing="2">春暖花開</text>
+    <text x="160" y="172" text-anchor="middle" font-family="Noto Serif TC,serif" font-weight="900" font-size="36" fill="#5a4012">878</text>
+    <text x="160" y="193" text-anchor="middle" font-family="LXGW WenKai TC,serif" font-size="13" fill="#5a4012">個南洋的日子</text>
+  </svg>`;
+
+  const coin = $('#coin'), shine = $('#shine'), stage = $('#stage');
+  let rot = -18, vel = 0, drag = null, auto = !reduce;
+  const apply = () => { coin.style.transform = `rotateY(${rot}deg)`; shine.style.setProperty('--sx', (120 - ((rot%360+360)%360)/360*160)+'%'); };
+  stage.addEventListener('pointerdown', e => { drag = {x:e.clientX, r:rot}; auto = false; stage.setPointerCapture(e.pointerId); });
+  stage.addEventListener('pointermove', e => { if(!drag) return; const nr = drag.r + (e.clientX-drag.x)*.8; vel = nr - rot; rot = nr; apply(); });
+  const end = () => { drag = null; };
+  stage.addEventListener('pointerup', end); stage.addEventListener('pointercancel', end);
+  function loop(){ if(!drag){ if(Math.abs(vel)>.05){ rot += vel; vel *= .95; } else if(auto){ rot += .25; } apply(); } requestAnimationFrame(loop); }
+  apply(); if (!reduce) requestAnimationFrame(loop);
+
+  /* ceremony */
+  const cv = $('#confetti'), cx = cv.getContext('2d'); let parts = [], running = false;
+  const COLORS = ['#d8414b','#f2a24e','#e6c27a','#ece6d9','#c0303a'];
+  function burst(){
+    const r = cv.getBoundingClientRect(); cv.width = r.width*devicePixelRatio; cv.height = r.height*devicePixelRatio; cx.setTransform(devicePixelRatio,0,0,devicePixelRatio,0,0);
+    for (let i=0;i<170;i++) parts.push({x:Math.random()*r.width, y:-20-Math.random()*r.height*.6, vy:1+Math.random()*2.2, vx:-.6+Math.random()*1.2, a:Math.random()*6, va:-.08+Math.random()*.16, s:6+Math.random()*9, c:COLORS[i%5], w:Math.random()*6});
+    if(!running){ running = true; requestAnimationFrame(step); }
+  }
+  function step(){
+    const r = cv.getBoundingClientRect(); cx.clearRect(0,0,r.width,r.height);
+    parts.forEach(p => { p.y += p.vy; p.w += .03; p.x += p.vx + Math.sin(p.w)*.8; p.a += p.va;
+      cx.save(); cx.translate(p.x,p.y); cx.rotate(p.a); cx.fillStyle = p.c;
+      for (let k=0;k<5;k++){ cx.rotate(Math.PI*2/5); cx.beginPath(); cx.ellipse(0,-p.s*.55,p.s*.32,p.s*.55,0,0,Math.PI*2); cx.fill(); } /* hibiscus */
+      cx.restore(); });
+    parts = parts.filter(p => p.y < r.height + 30);
+    if (parts.length) requestAnimationFrame(step); else { running = false; cx.clearRect(0,0,r.width,r.height); }
+  }
+  $('#award').addEventListener('click', () => {
+    const h = $('#hang'), c = $('#citation');
+    h.classList.remove('drop'); c.classList.remove('stamp'); void h.offsetWidth;
+    if (!reduce){ h.classList.add('drop'); vel = 26; auto = true; burst(); }
+    setTimeout(() => c.classList.add('stamp'), reduce ? 0 : 900);
+    $('#award').textContent = '再頒一次';
+  });
+})();
+
+/* ── Homeward plane ── */
+(function(){ const p = $('#hw'), g = $('#plane'), L = p.getTotalLength(); let t0=null;
+  function f(ts){ if(!t0) t0=ts; const k = Math.min(1,((ts-t0)/9000)%1.15); const a = p.getPointAtLength(k*L), b = p.getPointAtLength(Math.min(L,k*L+2));
+    g.setAttribute('transform',`translate(${a.x},${a.y}) rotate(${Math.atan2(b.y-a.y,b.x-a.x)*180/Math.PI})`); requestAnimationFrame(f); }
+  if(!reduce) requestAnimationFrame(f); else { const a = p.getPointAtLength(L*.6); g.setAttribute('transform',`translate(${a.x},${a.y})`); }
+})();
+
+/* ── Hero sky: dusk over the Strait of Malacca ── */
+(function sky(){
+  const c = $('#sky'), x = c.getContext('2d'); let W,H, birds = [];
+  function size(){ const r = c.getBoundingClientRect(); W = r.width; H = r.height; c.width = W*devicePixelRatio; c.height = H*devicePixelRatio; x.setTransform(devicePixelRatio,0,0,devicePixelRatio,0,0);
+    birds = Array.from({length:9},(_,i)=>({x:Math.random()*W, y:H*(.12+Math.random()*.3), s:.6+Math.random()*.8, v:.25+Math.random()*.4, p:Math.random()*6})); }
+  function palm(px,base,h,lean){
+    x.strokeStyle = '#0b1418'; x.fillStyle = '#0b1418'; x.lineWidth = 5; x.lineCap = 'round';
+    x.beginPath(); x.moveTo(px,base); x.quadraticCurveTo(px+lean*.5,base-h*.5,px+lean,base-h); x.stroke();
+    const tx = px+lean, ty = base-h;
+    for (let i=0;i<7;i++){ const a = -Math.PI + i*Math.PI/6 + .05; x.beginPath(); x.moveTo(tx,ty);
+      x.quadraticCurveTo(tx+Math.cos(a)*h*.28, ty+Math.sin(a)*h*.18-8, tx+Math.cos(a)*h*.42, ty+Math.sin(a)*h*.1+h*.12); x.lineWidth = 3.2; x.stroke(); }
+  }
+  function draw(t){
+    const hz = H*.66;
+    const g = x.createLinearGradient(0,0,0,hz);
+    g.addColorStop(0,'#13232c'); g.addColorStop(.45,'#3c3b4a'); g.addColorStop(.78,'#b8603b'); g.addColorStop(1,'#f2a24e');
+    x.fillStyle = g; x.fillRect(0,0,W,hz);
+    const sx = W*.68, sr = Math.min(W,H)*.09, sy = hz - sr*.35;
+    const glow = x.createRadialGradient(sx,sy,sr*.2,sx,sy,sr*5); glow.addColorStop(0,'rgba(255,214,150,.65)'); glow.addColorStop(1,'rgba(255,214,150,0)');
+    x.fillStyle = glow; x.fillRect(0,0,W,hz);
+    x.fillStyle = '#ffd796'; x.beginPath(); x.arc(sx,sy,sr,Math.PI,0); x.lineTo(sx+sr,hz); x.lineTo(sx-sr,hz); x.fill();
+    const s = x.createLinearGradient(0,hz,0,H); s.addColorStop(0,'#8a4a34'); s.addColorStop(.25,'#2c3640'); s.addColorStop(1,'#0e1b21');
+    x.fillStyle = s; x.fillRect(0,hz,W,H-hz);
+    for (let i=0;i<34;i++){ const y = hz + 4 + i*i*.32; if (y>H) break; const w = sr*(2.4 - i*.05) + Math.sin(t/900+i)*10; if (w<=0) continue;
+      x.fillStyle = `rgba(255,205,140,${.55 - i*.015})`; x.fillRect(sx - w/2 + Math.sin(t/700+i*1.7)*8, y, w, 1.6 + i*.05); }
+    x.fillStyle = '#0b1418'; x.fillRect(0,hz-3,W*.42,4);
+    x.beginPath(); x.moveTo(0,hz); for (let i=0;i<=40;i++){ const px = i*W*.42/40; x.lineTo(px, hz - 10 - Math.abs(Math.sin(i*1.3))*8 - (i<10?(10-i)*2:0)); } x.lineTo(W*.42,hz); x.fill();
+    palm(W*.06,hz,H*.36,20); palm(W*.15,hz,H*.27,-14); palm(W*.27,hz,H*.21,10);
+    x.strokeStyle = 'rgba(236,230,217,.85)'; x.lineWidth = 1.6; x.lineCap = 'round';
+    birds.forEach(b => { if (!reduce){ b.x += b.v; if (b.x > W+30) { b.x = -30; b.y = H*(.12+Math.random()*.3); } }
+      const f = Math.sin(t/220*b.v*2 + b.p)*4*b.s, w = 9*b.s;
+      x.beginPath(); x.moveTo(b.x-w, b.y-f); x.quadraticCurveTo(b.x-w*.4, b.y-3*b.s, b.x, b.y); x.quadraticCurveTo(b.x+w*.4, b.y-3*b.s, b.x+w, b.y-f); x.stroke(); });
+    const v = x.createLinearGradient(0,H*.75,0,H); v.addColorStop(0,'rgba(14,27,33,0)'); v.addColorStop(1,'rgba(14,27,33,1)'); x.fillStyle = v; x.fillRect(0,H*.75,W,H*.25);
+  }
+  size(); addEventListener('resize', size);
+  let vis = true; new IntersectionObserver(es => vis = es[0].isIntersecting).observe(c);
+  function loop(t){ if (vis) draw(t); requestAnimationFrame(loop); }
+  if (reduce) draw(0); else requestAnimationFrame(loop);
+})();
+</script>
