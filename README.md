@@ -35,3 +35,7 @@
 
 `video/allan-nanyang-anime.mp4`：5 分鐘的動漫短片，用 Q 版角色演出四個章節的心情歷程，字幕節錄自部落格原文。
 人物設定、分鏡腳本和配樂設計寫在 `video/SCRIPT.md`；動畫原始碼是 `video/anim.js`，配樂合成程式是 `video/music.py`。
+
+## 電影感動漫版
+
+`video/cinematic/allan-nanyang-cinematic.mp4`：5 分鐘，風格是逆光剪影、夕陽水面倒影、光暈與電影黑邊。分鏡寫在 `video/cinematic/SCRIPT.md`。
