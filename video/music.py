@@ -21,6 +21,14 @@ SHOTS = [
     ('phonecall', 7, 'thoughtful'), ('ch4', 4, 'card'), ('family', 13, 'bright'), ('puzzle', 13, 'bright'),
     ('byebike', 11, 'tender'), ('farewell', 11, 'tender'), ('home', 12, 'calm'), ('medal', 18, 'finale'),
 ]
+CINE = '--cinematic' in sys.argv
+if CINE:
+    SHOTS = [
+        ('lake', 22, 'calm'), ('taipei', 20, 'thoughtful'), ('depart', 20, 'hope'), ('dorm', 18, 'tender'),
+        ('rain', 18, 'sad'), ('ride', 24, 'hope'), ('fountain', 16, 'warm'), ('call', 18, 'sad'),
+        ('haze', 12, 'tender'), ('deepavali', 22, 'warm'), ('strait', 20, 'swell'), ('xmas', 14, 'sad'),
+        ('beach', 20, 'tender'), ('lastride', 18, 'swell'), ('farewell', 16, 'tender'), ('home', 22, 'finale'),
+    ]
 TOTAL = sum(d for _, d, _ in SHOTS)
 N = int(TOTAL * SR) + SR
 L = np.zeros(N); Rc = np.zeros(N)
@@ -101,6 +109,10 @@ def chime(m, dur=3.0):
     return s * env(n, 0.002, 1.1)
 
 # ── music ──
+if CINE:
+    for k in MOODS:
+        if MOODS[k]: MOODS[k] = dict(MOODS[k], marimba=0, shaker=0, sub=min(MOODS[k]['sub'], 2), piano=MOODS[k]['piano'] * .85, pad=MOODS[k]['pad'] * 1.25)
+PL = np.zeros(N); PR = np.zeros(N)
 t0 = 0.0
 for i, (name, d, mood) in enumerate(SHOTS):
     M = MOODS[mood]
@@ -123,7 +135,7 @@ for i, (name, d, mood) in enumerate(SHOTS):
             st = bt + s_ * BAR / steps
             if st >= t0 + d + 0.2: break
             note = arp[s_ % len(arp)] + 12
-            add(L, Rc, st, piano(note, vel=0.9 if s_ % M['sub'] == 0 else 0.6), pan=0.3 * np.sin(s_), gain=M['piano'])
+            add(PL, PR, st, piano(note, vel=0.9 if s_ % M['sub'] == 0 else 0.6), pan=0.3 * np.sin(s_), gain=M['piano'])
             if M['marimba'] and s_ % 2 == 1:
                 add(L, Rc, st, marimba(arp[(s_ * 3) % len(arp)] + 24), pan=-0.3, gain=M['marimba'])
             if M['shaker']:
@@ -133,6 +145,13 @@ for i, (name, d, mood) in enumerate(SHOTS):
             add(L, Rc, t0 + 2.0 + k * 0.5, chime(m), pan=(k - 2) * 0.3, gain=0.10)
     t0 += d
 
+# piano bus with echo (longer tails in the cinematic cut)
+L += PL; Rc += PR
+taps = [(0.37, 0.32, 1), (0.74, 0.2, -1), (1.11, 0.12, 1), (1.6, 0.07, -1)] if CINE else [(0.37, 0.12, 1)]
+for dt, g, side in taps:
+    k = int(dt * SR)
+    src_l, src_r = (PR, PL) if side < 0 else (PL, PR)
+    L[k:] += lowpass(src_l[:-k], 0.5) * g; Rc[k:] += lowpass(src_r[:-k], 0.5) * g
 # ── ambience / sfx ──
 starts = {}; acc = 0.0
 for name, d, _ in SHOTS: starts[name] = (acc, d); acc += d
@@ -147,24 +166,28 @@ def ambience(name, kind, gain, a=None, b=None):
     fade = int(0.8 * SR); x[:fade] *= np.linspace(0, 1, fade); x[-fade:] *= np.linspace(1, 0, fade)
     add(L, Rc, s0 + a, x, gain=gain)
 
-ambience('open', 'sea', 0.10); ambience('seaback', 'sea', 0.10, 3.6)
-ambience('rain', 'rain', 0.16); ambience('flight', 'cabin', 0.22, 0, 5.5); ambience('home', 'cabin', 0.22, 0, 6.5)
-ambience('xmas', 'street', 0.05)
+if CINE:
+    ambience('lake', 'sea', 0.07); ambience('strait', 'sea', 0.10); ambience('beach', 'sea', 0.10); ambience('lastride', 'sea', 0.05)
+    ambience('rain', 'rain', 0.18); ambience('xmas', 'rain', 0.08); ambience('depart', 'cabin', 0.18, 9.5, 20); ambience('home', 'cabin', 0.2, 0, 9)
+else:
+  ambience('open', 'sea', 0.10); ambience('seaback', 'sea', 0.10, 3.6)
+  ambience('rain', 'rain', 0.16); ambience('flight', 'cabin', 0.22, 0, 5.5); ambience('home', 'cabin', 0.22, 0, 6.5)
+  ambience('xmas', 'street', 0.05)
 
-def ring(dur=0.35):
-    n = int(dur * SR); t = np.arange(n) / SR
-    s = (np.sign(np.sin(2 * np.pi * 1180 * t)) + np.sign(np.sin(2 * np.pi * 1480 * t))) * 0.5 * (np.sin(2 * np.pi * 22 * t) > 0)
-    return lowpass(s, 0.5) * env(n, 0.005, 2)
-for k in range(3): add(L, Rc, starts['phonecall'][0] + 0.4 + k * 0.7, ring(), gain=0.10)
+  def ring(dur=0.35):
+      n = int(dur * SR); t = np.arange(n) / SR
+      s = (np.sign(np.sin(2 * np.pi * 1180 * t)) + np.sign(np.sin(2 * np.pi * 1480 * t))) * 0.5 * (np.sin(2 * np.pi * 22 * t) > 0)
+      return lowpass(s, 0.5) * env(n, 0.005, 2)
+  for k in range(3): add(L, Rc, starts['phonecall'][0] + 0.4 + k * 0.7, ring(), gain=0.10)
 
-def bell():
-    return sum(chime(m, 1.6) for m in (88, 93)) * 0.5
-add(L, Rc, starts['newbike'][0] + 3.0, bell(), pan=0.4, gain=0.18)
-add(L, Rc, starts['byebike'][0] + 5.6, bell(), pan=0.4, gain=0.14)
+  def bell():
+      return sum(chime(m, 1.6) for m in (88, 93)) * 0.5
+  add(L, Rc, starts['newbike'][0] + 3.0, bell(), pan=0.4, gain=0.18)
+  add(L, Rc, starts['byebike'][0] + 5.6, bell(), pan=0.4, gain=0.14)
 
-def click():
-    x = noise(0.06); return (x - lowpass(x, 0.7)) * env(len(x), 0.001, 0.01)
-for k in range(1, 5): add(L, Rc, starts['flight'][0] + k * 1.3, click(), gain=0.35)
+  def click():
+      x = noise(0.06); return (x - lowpass(x, 0.7)) * env(len(x), 0.001, 0.01)
+  for k in range(1, 5): add(L, Rc, starts['flight'][0] + k * 1.3, click(), gain=0.35)
 
 # fade in / out + gentle limiter
 fi = int(1.5 * SR); L[:fi] *= np.linspace(0, 1, fi); Rc[:fi] *= np.linspace(0, 1, fi)
@@ -174,6 +197,6 @@ mix = np.stack([L, Rc], 1)[:end]
 mix = np.tanh(mix * 1.4) / np.tanh(1.4)
 mix /= max(1e-9, np.abs(mix).max()) / 0.89
 pcm = (mix * 32767).astype('<i2')
-with wave.open(sys.argv[1] if len(sys.argv) > 1 else 'music.wav', 'wb') as w:
+with wave.open([a for a in sys.argv[1:] if not a.startswith('--')][0], 'wb') as w:
     w.setnchannels(2); w.setsampwidth(2); w.setframerate(SR); w.writeframes(pcm.tobytes())
 print('ok', TOTAL, 's')
