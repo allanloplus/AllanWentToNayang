@@ -29,6 +29,14 @@ if CINE:
         ('haze', 12, 'tender'), ('deepavali', 22, 'warm'), ('strait', 20, 'swell'), ('xmas', 14, 'sad'),
         ('beach', 20, 'tender'), ('lastride', 18, 'swell'), ('farewell', 16, 'tender'), ('home', 22, 'finale'),
     ]
+SUNNY = '--sunny' in sys.argv
+if SUNNY:
+    SHOTS = [
+        ('sky', 18, 'hope'), ('plane', 18, 'bright'), ('arrive', 18, 'hope'), ('team', 20, 'warm'),
+        ('food', 18, 'bright'), ('bike', 22, 'bright'), ('village', 18, 'warm'), ('fountain', 20, 'hope'),
+        ('water', 18, 'bright'), ('deepavali', 18, 'warm'), ('rainbow', 20, 'tender'), ('family', 22, 'bright'),
+        ('puzzle', 18, 'hope'), ('farewell', 20, 'warm'), ('home', 32, 'finale'),
+    ]
 TOTAL = sum(d for _, d, _ in SHOTS)
 N = int(TOTAL * SR) + SR
 L = np.zeros(N); Rc = np.zeros(N)
@@ -166,7 +174,11 @@ def ambience(name, kind, gain, a=None, b=None):
     fade = int(0.8 * SR); x[:fade] *= np.linspace(0, 1, fade); x[-fade:] *= np.linspace(1, 0, fade)
     add(L, Rc, s0 + a, x, gain=gain)
 
-if CINE:
+if SUNNY:
+    ambience('family', 'sea', 0.08); ambience('plane', 'cabin', 0.12); ambience('home', 'cabin', 0.12, 0, 15)
+    for k, tt in enumerate([3.0, 3.25]): add(L, Rc, starts['bike'][0] + tt, chime(93 - k * 5, 1.4), pan=0.4, gain=0.14)
+    for k, m_ in enumerate([84, 88, 91, 96]): add(L, Rc, starts['rainbow'][0] + 1 + k * .3, chime(m_), gain=0.08)
+elif CINE:
     ambience('lake', 'sea', 0.07); ambience('strait', 'sea', 0.10); ambience('beach', 'sea', 0.10); ambience('lastride', 'sea', 0.05)
     ambience('rain', 'rain', 0.18); ambience('xmas', 'rain', 0.08); ambience('depart', 'cabin', 0.18, 9.5, 20); ambience('home', 'cabin', 0.2, 0, 9)
 else:
