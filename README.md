@@ -39,3 +39,7 @@
 ## 電影感動漫版
 
 `video/cinematic/allan-nanyang-cinematic.mp4`：5 分鐘，風格是逆光剪影、夕陽水面倒影、光暈與電影黑邊。分鏡寫在 `video/cinematic/SCRIPT.md`。
+
+## 陽光版（90 年代動畫風格）
+
+`video/sunny/allan-nanyang-sunny.mp4`：5 分鐘，只收錄溫暖、正面的回憶。角色採賽璐璐動畫風格（大眼睛、兩階陰影、藍天積雲）。腳本寫在 `video/sunny/SCRIPT.md`。
