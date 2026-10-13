@@ -43,3 +43,7 @@
 ## 陽光版（90 年代動畫風格）
 
 `video/sunny/allan-nanyang-sunny.mp4`：5 分鐘，只收錄溫暖、正面的回憶。角色採賽璐璐動畫風格（大眼睛、兩階陰影、藍天積雲）。腳本寫在 `video/sunny/SCRIPT.md`。
+
+## 主角版（以 Allan 角色設定圖演出）
+
+`video/allan/allan-nanyang-starring-allan.mp4`：5 分鐘。主角直接使用 Allan 提供的角色設定圖，去背後做成剪紙偶動畫，九種表情配合劇情切換。腳本寫在 `video/allan/SCRIPT.md`。
