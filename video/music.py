@@ -37,6 +37,14 @@ if SUNNY:
         ('water', 18, 'bright'), ('deepavali', 18, 'warm'), ('rainbow', 20, 'tender'), ('family', 22, 'bright'),
         ('puzzle', 18, 'hope'), ('farewell', 20, 'warm'), ('home', 32, 'finale'),
     ]
+if '--allan' in sys.argv:
+    SUNNY = True
+    SHOTS = [
+        ('title', 18, 'hope'), ('decide', 18, 'thoughtful'), ('plane', 16, 'bright'), ('arrive', 18, 'hope'),
+        ('worry', 14, 'tender'), ('team', 18, 'warm'), ('food', 16, 'bright'), ('bike', 24, 'bright'),
+        ('village', 16, 'warm'), ('fountain', 18, 'hope'), ('water', 16, 'bright'), ('deepavali', 16, 'warm'),
+        ('rainbow', 18, 'tender'), ('family', 24, 'bright'), ('puzzle', 20, 'warm'), ('home', 30, 'finale'),
+    ]
 TOTAL = sum(d for _, d, _ in SHOTS)
 N = int(TOTAL * SR) + SR
 L = np.zeros(N); Rc = np.zeros(N)
